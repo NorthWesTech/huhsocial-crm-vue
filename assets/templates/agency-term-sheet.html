@@ -1,0 +1,407 @@
+<html>
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet" />
+    <style type="text/css">
+        html {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #333;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            font-size: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: .5rem;
+            border: 0px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #333;
+            max-width: 100%;
+        }
+
+        .justify-md-start {
+            justify-content: flex-start !important;
+        }
+
+        .table-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 3fr;
+            grid-template-rows: 50px 1fr;
+            grid-template-areas: "header header header"
+                "section-title table-title content"
+                "section-title table-title content"
+                "section-title table-title content";
+        }
+
+        .table-container.headless {
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas: "section-title table-title content"
+                "section-title table-title content"
+                "section-title table-title content";
+        }
+
+        .table-container .header {
+            grid-area: header;
+            background-color: #00B5E2;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            font-weight: 600;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .table-container .section-title {
+            grid-area: section-title;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #fff;
+            border-right: 1px solid #d4d4d4;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .table-container.dark .section-title,
+        .table-container.dark .table-title,
+        .table-container.dark .content {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .section-title.dark {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .table-title {
+            grid-area: table-title;
+            border-right: 1px solid #d4d4d4;
+        }
+
+        .table-container .content {
+            grid-area: content;
+        }
+
+        .table-container.no-content .section-title {
+            border: 0;
+            font-weight: 600;
+        }
+
+        .table-container.no-content .table-title {
+            border-right: 0;
+            grid-column: 2/-1;
+            padding: 1rem;
+        }
+
+        .table-container .table-row {
+            display: flex;
+            align-items: center;
+            padding: .75rem;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .table-container .table-row.dark {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .row-1 {
+            height: 75px;
+        }
+
+        .table-container .row-2 {
+            height: 35px;
+        }
+
+        .table-container .row-3 {
+            height: 35px;
+        }
+
+        .table-container input,
+        .table-container label {
+            width: 100%;
+        }
+
+        .form-box-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 2rem;
+        }
+
+        .form-box-wrapper .form-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-box-wrapper .form-box .header {
+            background-color: #00B5E2;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: .25rem;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+        }
+
+        .form-box-wrapper .form-box .content {
+            padding: .5rem 0;
+        }
+
+        .form-box-wrapper .form-box .content input {
+            width: 100%;
+        }
+
+        .g-sign {
+            background-image: url('https://assets.dev.lanistar.app/inf-admin/templateimages/company-signature.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+        }
+
+        .page1 {
+            background: url('https://assets.dev.lanistar.app/inf-admin/templateimages/cover-black.jpg') no-repeat;
+            background-size: cover;
+            margin: 0 !important;
+            height: calc(1024px - 60px) !important;
+        }
+
+        .page1 h2 {
+            color: #ffffff;
+            max-width: 320px;
+
+        }
+
+        .pdf-page h2 {
+            font-family: arial;
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 0;
+
+        }
+
+        .pdf-page main {
+            background: none;
+
+        }
+
+        .pdf-page {
+            display: block;
+            position: relative;
+            padding: 30px 60px;
+        }
+
+
+        #lanistarSignature,
+        #agencySignature,
+        #ambassadorSignature,
+        #NDAContractSignature {
+            height: 65px !important;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            margin-top: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <section class="page1 pdf-page inner-page" id="main_header">
+            <header style="padding-top:60px;">
+                <h2>LANISTAR TERMS SHEET AGENCY AGREEMENT</h2>
+            </header>
+            <main>&nbsp;</main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <header>
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td style="width:50%;">
+                                <h2 style="color:#00b2e2;">LANISTAR TERMS SHEET AGENCY AGREEMENT</h2>
+                            </td>
+                            <td class="star_img_sec" style="width:50%; text-align:right;"><img class="star_img"
+                                    src="https://assets.dev.lanistar.app/inf-admin/templateimages/lanistar-star.png"
+                                    style="max-width:150px;" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </header>
+
+            <main>
+                <p>This Term Sheet describes the nature of shares you may be issued under your Referral Agreement with
+                    Lanistar. Please note, this Term Sheet is not legally binding. Capitalised terms not defined in this
+                    Term Sheet have the meaning given to them in your Referral Agreement.</p>
+                <p>
+                    To the extent there is any inconsistency between this Term Sheet on the one hand and the terms of
+                    your Referral Agreement or Lanistar’s articles of association (“Articles”) on the other, the terms
+                    of the Referral Agreement or articles (as applicable) shall prevail.
+                </p>
+                <div class="table-container no-content dark" style="margin-top:2rem;">
+                    <div class="header">DETAILS OF YOUR AGREEMENT</div>
+                    <div class="section-title">Name of Referrer</div>
+
+                    <div class="table-title"><strong>{{influencerName}}</strong></div>
+                </div>
+
+                <div class="table-container headless no-content">
+                    <div class="section-title">Agreement date</div>
+                    <div class="table-title">{{currentDate}}</div>
+                </div>
+
+                <div class="table-container headless no-content dark">
+                    <div class="section-title">Services</div>
+
+                    <div class="table-title">Outlined in activities.</div>
+                </div>
+                <h3>CLAIMING YOUR SHARES</h3>
+
+                <h4>Invoices:</h4>
+
+                <p>In order to be issued with the shares detailed below, you will need to raise an invoice to
+                    <strong>Lanistar</strong>
+                    as detailed in the Fee and/or Referral Bonus section of your agreement. Raising the invoice
+                    accurately is important to ensure we can issue you the shares you are entitled to.</p>
+
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+
+                <h6>When should you raise your invoice?</h6>
+
+                <p>Your invoice for the Referral Fee should be raised once the relevant influencer has been engaged by
+                    Lanistar for 6 months (further details below).</p>
+
+                <h6>How much should your invoice be for?</h6>
+
+                <p><strong>Lanistar</strong> will notify you how many shares you are to receive per referral – please
+                    issue an invoice
+                    for values provided by lanistar as mentioned below</p>
+
+                <h3>CLAIMING YOUR SHARES</h3>
+                <p>
+                    If you introduce influencers to <strong>Lanistar</strong>, <strong>Lanistar</strong> may, in its
+                    discretion, award certain ‘C’ shares
+                    In <strong>Lanistar</strong> Limited to you. The issue of such shares is subject to you introducing
+                    influencers to
+                    <strong>Lanistar</strong>, who <strong>Lanistar</strong> (at its discretion) chooses to engage and
+                    only where those influencers
+                    continue to work with <strong>Lanistar</strong> for at least 6 months. We will keep you updated on
+                    whether we engage
+                    influencers you introduce to us. If we sign an agreement with them, we will let you know the start
+                    date.
+                </p>
+                <p>
+                    If you are eligible, you will need to raise an invoice to <strong>Lanistar</strong> as detailed
+                    above and in the
+                    Referral Fee section of your agreement. The number of ‘C’ shares to be issued will be determined by
+                    <strong>Lanistar</strong> who will consider the number and nature of influencers introduced.
+                </p>
+                <p>Payment of the above invoice is by the issue of ‘C’ shares in Lanistar Limited at their nominal
+                    value. Each share has a nominal value of £0.01, therefore 100 shares will be issued for each £1 of
+                    your invoice. For example:</p>
+                <ul>
+                    <li>for an invoice for a Fee of £100, 10,000 shares will be issued.</li>
+                </ul>
+
+                <p>Based on a potential 5 Billion total valuation of Lanistar Limited each of the shares received would
+                    be worth £12.50 (E.g 10,000 shares x £12.50 = £125,000)</p>
+
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <h3>Information required to issue shares</h3>
+                <p>
+                    We need the following information from you in order to issue the above shares to you. Please ensure
+                    the information you give to us in accurate, and kept up-to-date:
+                </p>
+                <ul>
+                    <li>Full name</li>
+                    <li>Usual residential addres</li>
+                </ul>
+                <h3>SHARE STRUCTURE</h3>
+                <p>For the referral of the below values agents will receive the shares as follows:</p>
+                <ul>
+                    <li>600k - 2 million followers - 2,500 shares</li>
+                    <li>2.1 million - 15 million followers - 5,000 shares</li>
+                    <li>15.1 million - 30 million+ followers - 10,000 shares</li>
+                </ul>
+                <h3>SHARE SPECIFICS</h3>
+                <p><strong>&lsquo;C&rsquo; Shares </strong></p>
+                <p>&bull; In total the &lsquo;C&rsquo; shareholders will together own 2.5% of the total value of
+                    Lanistar.
+                </p>
+
+                <p>&bull; Accordingly, each of these &lsquo;C&rsquo; shareholders will own a share of this 2.5%.</p>
+
+                <p>&bull; Referrers will be issued with &lsquo;C&rsquo; shares in Lanistar&rsquo;s sole discretion.</p>
+
+                <h3>SHARE SPECIFICS</h3>
+                <p><strong>&lsquo;C&rsquo; Shares </strong></p>
+                <p>&bull; In total the &lsquo;C&rsquo; shareholders will together own 2.5% of the total value of
+                    Lanistar.
+                </p>
+
+                <p>&bull; Accordingly, each of these &lsquo;C&rsquo; shareholders will own a share of this 2.5%.</p>
+
+                <p>&bull; Referrers will be issued with &lsquo;C&rsquo; shares in Lanistar&rsquo;s sole discretion.</p>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <p>&bull; <strong>Lanistar </strong>may serve notice to convert any &lsquo;B&rsquo; or &lsquo;C&rsquo;
+                    shares into worthless deferred shares in the event you are in material breach of your Referral
+                    Agreement.</p>
+
+                <p>&bull; In the event of a sale of a majority of the A shares to a third party, the selling A
+                    shareholders
+                    will have the right to require all of the remaining shareholders to sell all of their shares to the
+                    buyer on substantially the same terms but with the aggregate amount payable to the C shareholders,
+                    being
+                    2.5% of the overall consideration.</p>
+
+                <p><strong>CHANGES IN YOUR POSITION</strong></p>
+
+                <p>Should anything happen to you concerning:</p>
+
+                <p>&bull; your financial stability and you are declared bankrupt, the Lanistar Board will determine the
+                    best
+                    course of action with respect to your shares. This may include transferring your shares to a
+                    Lanistar
+                    appointed third party at market value; or</p>
+
+                <p>&bull; your health, your shares in <strong>Lanistar </strong>will pass to your beneficiaries in
+                    accordance with your will, or your next of kin (as applicable).</p>
+
+                <p>Please see the <strong>Lanistar </strong>Articles of Association for more information on the above,
+                    together with additional information on what you can do with your <strong>Lanistar </strong>shares.
+                </p>
+            </main>
+        </section>
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,992 @@
+<html>
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet" />
+    <style type="text/css">
+        html {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #333;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            font-size: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: .5rem;
+            border: 0px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #333;
+            max-width: 100%;
+        }
+
+        .justify-md-start {
+            justify-content: flex-start !important;
+        }
+
+        .table-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 3fr;
+            grid-template-rows: 50px 1fr;
+            grid-template-areas: "header header header"
+                "section-title table-title content"
+                "section-title table-title content"
+                "section-title table-title content";
+        }
+
+        .table-container.headless {
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas: "section-title table-title content"
+                "section-title table-title content"
+                "section-title table-title content";
+        }
+
+        .table-container .header {
+            grid-area: header;
+            background-color: #00B5E2;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            font-weight: 600;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .table-container .section-title {
+            grid-area: section-title;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #fff;
+            border-right: 1px solid #d4d4d4;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .table-container.dark .section-title,
+        .table-container.dark .table-title,
+        .table-container.dark .content {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .section-title.dark {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .table-title {
+            grid-area: table-title;
+            border-right: 1px solid #d4d4d4;
+        }
+
+        .table-container .content {
+            grid-area: content;
+        }
+
+        .table-container.no-content .section-title {
+            border: 0;
+            font-weight: 600;
+        }
+
+        .table-container.no-content .table-title {
+            border-right: 0;
+            grid-column: 2/-1;
+            padding: 1rem;
+        }
+
+        .table-container .table-row {
+            display: flex;
+            align-items: center;
+            padding: .75rem;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .table-container .table-row.dark {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .row-1 {
+            height: 75px;
+        }
+
+        .table-container .row-2 {
+            height: 35px;
+        }
+
+        .table-container .row-3 {
+            height: 35px;
+        }
+
+        .table-container input,
+        .table-container label {
+            width: 100%;
+        }
+
+        .form-box-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 2rem;
+        }
+
+        .form-box-wrapper .form-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-box-wrapper .form-box .header {
+            background-color: #00B5E2;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: .25rem;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+        }
+
+        .form-box-wrapper .form-box .content {
+            padding: .5rem 0;
+        }
+
+        .form-box-wrapper .form-box .content input {
+            width: 100%;
+        }
+
+        .g-sign {
+            background-image: url('https://assets.dev.lanistar.app/inf-admin/templateimages/company-signature.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+        }
+
+        .page1 {
+            background: url('https://assets.dev.lanistar.app/inf-admin/templateimages/cover-black.jpg') no-repeat;
+            background-size: cover;
+            margin: 0 !important;
+            height: calc(1024px - 60px) !important;
+        }
+
+        .page1 h2 {
+            color: #ffffff;
+            max-width: 320px;
+
+        }
+
+        .pdf-page h2 {
+            font-family: arial;
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 0;
+
+        }
+
+        .pdf-page main {
+            background: none;
+
+        }
+
+        .pdf-page {
+            display: block;
+            position: relative;
+            padding: 30px 60px;
+        }
+
+
+        #lanistarSignature,
+        #agencySignature,
+        #ambassadorSignature,
+        #NDAContractSignature {
+            height: 65px !important;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            margin-top: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <section class="page1 pdf-page inner-page" id="main_header">
+            <header style="padding-top:60px;">
+                <h2>LANISTAR OWNERSHIP CONTRACT</h2>
+            </header>
+            <main>&nbsp;</main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <header>
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td style="width:50%;">
+                                <h2 style="color:#00b2e2;">LANISTAR OWNERSHIP CONTRACT</h2>
+                            </td>
+                            <td class="star_img_sec" style="width:50%; text-align:right;"><img class="star_img"
+                                    src="https://assets.dev.lanistar.app/inf-admin/templateimages/lanistar-star.png"
+                                    style="max-width:150px;" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </header>
+
+            <main>
+                <p><strong>DATE: {{currentDate}} (&quot;Commencement Date&quot;)</strong></p>
+
+                <p><strong>BETWEEN:</strong></p>
+
+                <p>(1) <strong>LANISTAR LIMITED</strong>, a company incorporated in England and Wales with company
+                    number
+                    12091938 whose registered address is at 361 King Street, London, England, W6 9NA (&quot;
+                    <strong>Lanistar</strong>&quot;);</p>
+
+                <p>(2) <label> <input data-kpxc-id="kpxcpw342845640" name="ambassador name"
+                            placeholder="Enter your full name" required="required" size="30"
+                            type="text" />&nbsp;</label>
+                </p>
+
+                <p>of</p>
+
+                <p><b>Full Address And Country</b>:&nbsp; <label> </label><label> </label><br />
+                    <textarea cols="90" name="address"
+                        oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight + 10) + 'px'"
+                        placeholder="Enter your full home address and country" required="required"
+                        rows="4"></textarea><br />
+                    (&quot; <strong>Ambassador</strong>&quot;)</p>
+
+                <p>Lanistar is conducting a marketing campaign and wants Ambassador to take part in the campaign by
+                    producing original and relevant content and granting Lanistar certain related rights of use and
+                    publicity in relation to the content. Ambassador Company and Agency (as applicable) shall procure
+                    that
+                    Ambassador provides such services and grants such rights as specified in and subject to the Overview
+                    and
+                    the Conditions (collectively this &quot;Agreement&quot;).</p>
+            </main>
+
+
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <div class="table-container">
+                    <div class="header">SIGNED</div>
+
+                    <div class="section-title dark">For and on behalf of <strong>Lanistar:</strong></div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1">Signature</div>
+
+                        <div class="table-row row-2 dark">Name</div>
+
+                        <div class="table-row row-3">Date</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1">
+                            <div class="g-sign" id="lanistarSignature">&nbsp;</div>
+                        </div>
+
+                        <div class="table-row row-2 dark">Gurhan Kiziloz</div>
+
+                        <div class="table-row row-3">{{currentDate}}</div>
+                    </div>
+                </div>
+                <div class="table-container headless">
+                    <div class="section-title">For and on behalf of <strong>Agency:</strong></div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1">Signature</div>
+
+                        <div class="table-row row-2 dark">Name</div>
+
+                        <div class="table-row row-3">Date</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1">
+                            <div id="agencySignature">&nbsp;</div>
+                        </div>
+
+                        <div class="table-row row-2 dark"><label><input class="form-control" name="Agency Name"
+                                    placeholder="Enter your name" type="text" /> </label></div>
+
+                        <div class="table-row row-3"><label><input class="form-control" name="Agency Date"
+                                    placeholder="**/**/****" type="text" data-date="true" /> </label></div>
+                    </div>
+                </div>
+                <div class="table-container headless">
+                    <div class="section-title dark">For and on behalf of <strong>Ambassador:</strong></div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1">Signature</div>
+
+                        <div class="table-row row-2 dark">Name</div>
+
+                        <div class="table-row row-3">Date</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1">
+                            <div data-signature="true" id="ambassadorSignature">&nbsp;</div>
+                        </div>
+
+                        <div class="table-row row-2 dark"><label><input class="form-control" name="ambassadorName"
+                                    placeholder="Enter your name" required="required" type="text" /> </label></div>
+
+                        <div class="table-row row-3"><label><input class="form-control"
+                                    data-error-message="Please Enter Ambassador Date" name="Ambassador Date"
+                                    placeholder="**/**/****" data-date="true" required="required" type="text" />
+                            </label></div>
+                    </div>
+                </div>
+
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <div class="table-container">
+                    <div class="header">OVERVIEW</div>
+
+                    <div class="section-title dark">Lanistar contact details</div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1 dark">Name</div>
+
+                        <div class="table-row row-2">Tel</div>
+
+                        <div class="table-row row-3 dark">Email</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1 dark">Gurhan Kiziloz</div>
+
+                        <div class="table-row row-2">+44 7926476904</div>
+
+                        <div class="table-row row-3 dark">contracts@iamlanistar.com</div>
+                    </div>
+                </div>
+                <div class="table-container headless">
+                    <div class="section-title">Agency contact details</div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1">Name</div>
+
+                        <div class="table-row row-2 dark">Tel</div>
+
+                        <div class="table-row row-3">Email</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1"><label><input class="form-control"
+                                    placeholder="Enter Agency/Agent Name" type="text" /> </label></div>
+
+                        <div class="table-row row-2 dark"><label><input class="form-control"
+                                    placeholder="Enter Contact Number" type="text" /> </label></div>
+
+                        <div class="table-row row-3"><label><input class="form-control" placeholder="Enter your email"
+                                    type="text" /> </label></div>
+                    </div>
+                </div>
+                <div class="table-container headless">
+                    <div class="section-title dark">Ambassador contact details</div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1 dark">Name</div>
+
+                        <div class="table-row row-2">Tel</div>
+
+                        <div class="table-row row-3 dark">Email</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1 dark"><label><input class="form-control"
+                                    placeholder="Enter your name" type="text" /> </label></div>
+
+                        <div class="table-row row-2"><label><input class="form-control"
+                                    placeholder="Enter Contact Number" type="text" /> </label></div>
+
+                        <div class="table-row row-3 dark"><label><input class="form-control"
+                                    placeholder="Enter your email" type="text" /> </label></div>
+                    </div>
+                </div>
+                <div class="table-container headless no-content dark" style="margin-top:2rem;">
+                    <div class="section-title">Campaing</div>
+
+                    <div class="table-title">The launch of Lanistar&#39;s new payment card</div>
+                </div>
+
+                <div class="table-container headless no-content">
+                    <div class="section-title">Campaign Start Date</div>
+
+                    <div class="table-title">November 15th, 2020 (exact date to be notified 6 weeks prior to campaign
+                        start date)</div>
+                </div>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+
+                <div class="table-container headless no-content dark">
+                    <div class="section-title">Campaign End Date</div>
+
+                    <div class="table-title">12 months from the Campaign Start Date</div>
+                </div>
+
+                <div class="table-container headless no-content">
+                    <div class="section-title">Mid-Campaign Date</div>
+
+                    <div class="table-title">6 months from the Campaign Start Date</div>
+                </div>
+                <div class="table-container no-content mb-3">
+                    <div class="header">SERVICES</div>
+
+                    <div class="section-title justify-md-start">Activities</div>
+
+                    <div class="table-title">
+                        <p>During the Campaign, Ambassador will:</p>
+
+                        <ul>
+                            <li>participate in at least one (1) activity arranged by Lanistar, the nature of which
+                                will be notified in advance to the Ambassador by Lanistar, during which the
+                                Ambassador will create their Social Content (as defined below) to be used in real
+                                time on Ambassador&#39;s Channels (as defined below) and which for the avoidance of
+                                doubt shall be additional to the Social Content requirements detailed below. The
+                                activity will take place at a time and date notified to Ambassador, at a venue
+                                selected by <strong>Lanistar</strong>;</li>
+                            <li>participate in the launch event organised by Lanistar at a time and date notified to
+                                Ambassador by Lanistar at least 4 weeks prior to the event date, and at a venue
+                                selected by Lanistar, during which the Ambassador will create their Social Content
+                                to be used in real time on Ambassador&#39;s Channels (as defined below) and which
+                                for the avoidance of doubt shall be additional to the Social Content requirements
+                                detailed below. Attendance at the launch event is compulsory (
+                                <strong>Lanistar</strong> may grant exemptions to this at its sole discretion for
+                                valid reason).</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <p>For the avoidance of doubt the Social Content created pursuant to this section,
+                    Activities, shall be subject to the Disclosure Requirements and Timing Requirements set
+                    out below but shall not be subject to the Approval Requirements set out below.</p>
+
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Social Content</div>
+
+                    <div class="table-title">
+                        <p>Ambassador shall utilise their standing on social media via accounts owned and controlled
+                            by Ambassador including (but not limited to) Instagram, Snapchat, Facebook, Twitter,
+                            TikTok, YouTube, LinkedIn and such other channel(s) as Lanistar may specify from time to
+                            time (each a &quot; <strong>Channel</strong>&quot;) to deliver Campaign messaging. As a
+                            minimum Ambassador will post the following stories and grid/feed posts:</p>
+
+                        <ul>
+                            <li>one scripted post on the Campaign Start Date (to be provided by Lanistar and posted
+                                in accordance with Lanistar&rsquo;s instructions) on an agreed Channel; the
+                                Ambassador acknowledges that all Lanistar influencers will be posting an identical
+                                post on the Campaign Start Date and its accuracy (both content and timing) is of the
+                                essence; and thereafter</li>
+                            <li><strong>per month</strong> during the Campaign a minimum of 4 organic posts on the
+                                agreed Channel (content to be creatively and authentically produced by Ambassador to
+                                be posted in accordance with Lanistar&rsquo;s instructions and subject to
+                                Lanistar&rsquo;s prior approval); and</li>
+                            <li>from time to time during the Campaign, scripted captions (to be provided by
+                                Lanistar) on an agreed Channel,(collectively &quot; <strong>Social
+                                    Content</strong>&quot;).</li>
+                        </ul>
+
+                        <div style="height:10px;">&nbsp;</div>
+
+                        <p>The Social Content shall comprise a mixture of stories and grid/feed posts. Lanistar may
+                            specify the proportion of stories and grid/feed posts.</p>
+
+                        <div style="height:10px;">&nbsp;</div>
+
+                    </div>
+                </div>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <p style="background:#d1e9f6; padding:5px;">All Social Content will tag @Lanistar; include
+                    the following hashtags: #iamlanistar #lanistar</p>
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Social Content</div>
+                    <div class="table-title">
+                        <p><strong>Disclosure Requirements</strong></p>
+                        <ul>
+                            <li>All posts will make clear the commercial relationship between Ambassador and
+                                Lanistar. In particular Ambassador shall use the #ad handle in each post in a clear
+                                and upfront manner and always at the beginning of the post.</li>
+                            <li>The Ambassador shall not attempt to hide or in any way disguise the use of the #ad
+                                handle. Viewers should not be required to click on, scroll down or move their mouse
+                                over a link in order to view the #ad handle. In particular, where Social Content
+                                includes vlogs or videos, Ambassador shall use the #ad handle at the beginning of
+                                the title of the video/vlog and shall ensure that every occurrence of the video/vlog
+                                on a social network or otherwise (including in thumbnail form) displays the #ad
+                                handle.</li>
+                            <li>The #ad disclosure is required regardless of any space limitations of the post (e.g.
+                                Twitter). Ambassador shall comply with any other disclosure requirements or guidance
+                                from Lanistar from time to time and shall ensure that all posts conform to current
+                                good practice and any relevant Advertising Standards Authority guidance and rulings.
+                            </li>
+                            <li>Lanistar may request that Social Content is removed or edited at any time and
+                                Ambassador shall promptly comply with any such request.</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Social Content</div>
+
+                    <div class="table-title">
+
+                        <p><strong>Approval Requirements</strong></p>
+
+                        <p>Ambassador must submit all Social Content to Lanistar for approval prior to posting.
+                            Social Content relating to the Campaign launch shall be submitted at least 14 days in
+                            advance of the Campaign Start Date. All other Social Content shall be submitted a
+                            minimum of 7 days in advance of intended posting. Lanistar may make any changes to the
+                            Social Content as it deems necessary and where required Ambassador shall re-submit such
+                            modified Social Content to Lanistar for further approval. Once approved Ambassador shall
+                            post the Social Content in the agreed form.</p>
+
+                        <p><strong>Timing Requirements</strong></p>
+
+                        <p>All Social Content will be posted within the time periods discussed and agreed with
+                            Lanistar (based on data relating to Ambassador&rsquo;s interactions).</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <div class="table-container no-content dark" style="margin-top:2rem;">
+                    <div class="header">USAGE RIGHTS</div>
+
+                    <div class="section-title">Content</div>
+
+                    <div class="table-title">means all content, in any Form, created by the Ambassador and/or by or on
+                        behalf of Lanistar
+                        as a result of the Activities, including all Social Content.</div>
+                </div>
+
+                <div class="table-container headless no-content">
+                    <div class="section-title">Media</div>
+
+                    <div class="table-title">internet, digital (including
+                        organic and paid for campaigns), social media, new media print editorial, communications.</div>
+                </div>
+
+                <div class="table-container headless no-content dark">
+                    <div class="section-title">Form</div>
+
+                    <div class="table-title">still photos, video photos, hyperlapse photos, GIFs, boomerangs, live
+                        streams, videos</div>
+                </div>
+
+                <div class="table-container headless no-content ">
+                    <div class="section-title">Territory</div>
+
+                    <div class="table-title">Global.</div>
+                </div>
+
+                <div class="table-container headless no-content dark">
+                    <div class="section-title">Licence Period</div>
+
+                    <div class="table-title">From the Commencement Date to the date that is 12 months after the Campaign
+                        End Date.</div>
+                </div>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <div class="table-container no-content dark">
+                    <div class="header">PAYMENT AND INVOICING TERMS</div>
+
+                    <div class="section-title justify-md-start">Fee</div>
+
+                    <div class="table-title">
+                        <strong>&pound;XXX</strong> <strong> </strong>(the &quot;Fee&quot;) to be settled in full by
+                        Lanistar issuing to the [Ambassador] <strong> XXX </strong>B shares of &pound;0.01 each in
+                        the capital of Lanistar as further described in the Term Sheet (the &quot; <strong>B
+                            Shares</strong>&quot;), credited as fully paid-up at par, upon presentation of the
+                        applicable invoice by the Ambassador in a form acceptable to Lanistar (acting reasonably)
+                        and in accordance with the Payment Timetable below. Each such invoice (&quot; <strong>Fee
+                            Invoice</strong>&quot;) should reflect the fact it is to be settled by the issuance to
+                        the Ambassador of the B Shares.
+                    </div>
+                </div>
+
+                <div class="table-container headless no-content">
+                    <div class="section-title justify-md-start">Referral Bonus</div>
+
+                    <div class="table-title">
+                        <p>If the Ambassador refers one or more individuals to Lanistar who themselves go on to
+                            enter a contract with Lanistar for the purposes of providing influencer marketing
+                            services, Lanistar shall issue to the Ambassador C shares of &pound;0.01 in the capital
+                            of Lanistar at par as further described in the Term Sheet (&quot; <strong>C
+                                Shares</strong>&quot;). The number of C Shares to be issued to Ambassador in respect
+                            of any such successful referral shall be determined by Lanistar in its sole discretion
+                            (&quot; <strong>Referral Bonus</strong>&quot;). Any such issue of C Shares shall be
+                            subject to the conditions set out in the Payment Timetable detailed below and Ambassador
+                            issuing Lanistar with an invoice for the nominal value of the shares, being the cash
+                            equivalent of the Referral Bonus. Again, such invoice (the &quot; <strong>Bonus
+                                Invoice</strong>&quot;) should reflect the fact it is to be settled by the issuance
+                            to the Ambassador of the proposed number of C Shares.</p>
+
+                        <p>For the avoidance of doubt no Referral Bonus shall be payable to the Ambassador or Agency
+                            in respect of any individual already known to or in contact with Lanistar in relation to
+                            the actual or potential provision of influencer marketing services. Lanistar shall have
+                            the sole right to determine whether an individual referred by the Ambassador is suitable
+                            for its purposes.</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+        <div style="page-break-after:auto"></div>
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Payment Timetable</div>
+
+                    <div class="table-title">
+                        <p>The Fee will be paid to the Ambassador (in B Shares, as above) in two tranches:</p>
+
+                        <ul>
+                            <li>the first, within 30 days of the Mid-Campaign Date; and</li>
+                            <li>the second, within 30 days of the Campaign End Date</li>
+                        </ul>
+
+                        <p>provided the Ambassador has delivered the applicable Fee Invoice to Lanistar.</p>
+
+                        <p>The Referral Bonus, where relevant, will be paid to the Ambassador (in C Shares as above) 6
+                            months after execution of the applicable individual&#39;s contract with Lanistar, provided
+                            that such contract has not been terminated for any reason and Lanistar is satisfied (acting
+                            reasonably) with such individual&#39;s performance, and provided the Ambassador has
+                            delivered the Bonus Invoice to Lanistar. For the purposes of the Referral Bonus, Lanistar
+                            shall notify Ambassador following execution of the applicable individual&#39;s contract with
+                            Lanistar (and such individual shall be noted on the Bonus Invoice).</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Payment Timetable</div>
+
+                    <div class="table-title">If this Agreement is terminated prior to the Campaign End Date (except
+                        where Lanistar has terminated under Section 9(i), (ii), (iii), (iv) or (v) of the Conditions
+                        below, where no further fees shall be payable or shares issued to the Ambassador), the
+                        Ambassador will be issued B Shares based on a pro rata proportion of the Fee (the &quot;
+                        <strong>Pro Rata Fee</strong>&quot;) in respect of the Services satisfactorily provided to
+                        Lanistar to the date of termination (to be determined by Lanistar in its sole discretion). The
+                        number of the B Shares to be issued in such scenario shall be calculated by dividing the Pro
+                        Rata Fee by the Fee and multiplying the resultant fraction by the number of B Shares which would
+                        otherwise have been issued if the Agreement had not been terminated early, rounding down to the
+                        nearest whole number. These shares will be issued to the Ambassador, credited as fully paid,
+                        within 30 days of the later of the termination date and the Ambassador providing an invoice for
+                        the Services satisfactorily provided in the sum of the Pro Rata Fee.</div>
+                </div>
+            </main>
+
+
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <h3>CONDITIONS</h3>
+
+                <p>Capitalised terms in these conditions shall have meaning given to them in the Overview.</p>
+
+                <h4>1 Term.</h4>
+
+                <p>This Agreement comes into effect on the Commencement Date and, subject to the provisions for earlier
+                    termination set out in these Conditions, shall continue until the Campaign End Date after which it
+                    automatically terminates, unless terminated earlier in accordance with Section 9.</p>
+
+                <h4>2. Services.</h4>
+
+                <p>Ambassador shall perform the Services as described in the Overview and these Conditions or as
+                    Lanistar may request. Where dates and/or locations are set out in the Overview or have been agreed
+                    for the provision of particular services, Lanistar reserves the right to amend both the dates and
+                    the locations on giving reasonable notice to Ambassador and/or Agency. Agency shall procure that
+                    Ambassador shall deliver the Content to Lanistar immediately following creation by WeTransfer file
+                    link unless otherwise instructed by Lanistar.</p>
+
+                <h4>3. Agency and Ambassador&#39;s Obligations.</h4>
+
+                <p>Ambassador shall provide the Services at the time required and in accordance with the Overview in a
+                    competent and professional manner and in willing co-operation with others and shall follow all
+                    reasonable instructions of Lanistar in the performance of the Services and co-operate with any third
+                    parties working with or on behalf of Lanistar. Ambassador shall observe and adhere to any brand
+                    sensitivities that Lanistar may notify to Ambassador in relation to such brands&#39; inclusion in
+                    the Content. Ambassador shall not saturate their profile in the Media including on the Channels at
+                    the time of any agreed Social Content activity. In the event of any such saturation (to be
+                    determined by Lanistar in its sole discretion) Lanistar shall be entitled to require the Ambassador
+                    to re-post the Social Content on the Channels and/or re-post alternative content provided by
+                    Lanistar. Ambassador shall provide accurate and complete updates to Lanistar in respect of
+                    impressions, followers and such other data as Lanistar may require from time to time. Any reference
+                    in this Agreement to an obligation or requirement of the Ambassador shall be deemed to include,
+                    where relevant, an obligation on the Agency to procure that Ambassador complies with such obligation
+                    or requirement</p>
+            </main>
+        </section>
+        <div style="page-break-after:auto"></div>
+        <div class="pdf-page">
+            <main>
+                <h4>4. Rights.</h4>
+
+                <p>In accordance with the Usage Rights, Ambassador grants to Lanistar the right to sub-license,
+                    distribute, publish, exhibit, digitise, broadcast, stream, display, and otherwise use any aspect of
+                    the Content including Ambassador&#39;s name, image and likeness or any materials based on or derived
+                    from these items, along with the right to edit, adapt, manipulate, modify, enhance or make
+                    derivative works of any of the above for the purposes of advertising, promoting and marketing
+                    Lanistar and the Campaign in any Form via any Media, in the Territory, for the Licence Period. After
+                    the Licence Period, these rights extend in perpetuity for Lanistar&#39;s internal business, B2B and
+                    archival purposes. Notwithstanding termination or expiration of this Agreement or the Licence
+                    Period, Content posted on social media during the Licence Period may remain on the social media
+                    platform as originally posted.</p>
+
+                <h4>5. IP.</h4>
+
+                <p>Agency and Ambassador each acknowledge that it does not have any rights to Lanistar&#39;s names,
+                    logos, trade marks or any other intellectual property rights of Lanistar. Ambassador shall only
+                    contribute its original Content or Content which it has all the necessary rights to contribute.
+                    Ambassador and Agency shall each indemnify and hold Lanistar harmless against any costs, expenses
+                    and damages (including legal fees) incurred by Lanistar as a result of a third party making any
+                    claim (whether in relation to ownership or otherwise) in relation to the Content. Ambassador and
+                    Agency will not, at any time, commit any act, which in Lanistar&#39;s opinion: (i) shocks or offends
+                    the community; (ii) which manifests contempt or disregard for diversity, public morals or decency;
+                    or (iii) does not reflect favourably on Lanistar and its good name, goodwill and/or reputation.</p>
+
+                <h4>6. Exclusivity.</h4>
+
+                <p>From the Commencement Date until the Campaign End Date, Ambassador shall not conduct or host any
+                    promotional activities, events, appearances, collaborations or campaigns, or endorse or otherwise
+                    permit the use of Ambassador&#39;s name, photograph, likeness, endorsement or voice in any manner in
+                    advertising or publicity for any fintech brand or challenger bank.</p>
+            </main>
+        </div>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <h4>7. Fee.</h4>
+
+                <p>In consideration for procuring the provision of the Services and the grant of the Usage Rights,
+                    Lanistar shall pay Ambassador the Fee (in B Shares, as above) and, where relevant, the Referral
+                    Bonus (in C Shares as above). Lanistar shall satisfy the Fee and, where relevant, the Referral Bonus
+                    in accordance with the Payment Timetable. Ambassador shall have sole responsibility and liability
+                    for the withholding and/or payment of any taxes, fees, or payments required under law that may be
+                    imposed in connection with this Agreement. Other than the Fee, where relevant, the Referral Bonus
+                    and the Expenses, Lanistar shall not be responsible for any other costs or expenses incurred by
+                    Agency or Ambassador in relation to this Agreement. For the avoidance of doubt the Ambassador and/or
+                    Agency will not be paid in cash in relation to this Agreement or the provision of the Services, the
+                    issues of shares to the Ambassador as described in the Overview shall discharge, in full,
+                    Lanistar&#39;s obligation under this Agreement to pay the Fee and, where relevant, the Referral
+                    Bonus.</p>
+
+                <p>&nbsp;</p>
+
+                <h4>8. Liability.</h4>
+
+                <p>Each of Ambassador&#39;s and Agency&#39;s total liability to Lanistar under this Agreement shall not
+                    exceed the greater of the Fee and &pound;500,000. Nothing in this Agreement limits any liability
+                    which cannot lawfully be limited.</p>
+
+                <h4>9. Termination.</h4>
+
+                <p>In addition to its other rights and remedies, Lanistar may terminate all or part of this Agreement
+                    immediately on notice if: (i) Ambassador fails or refuses to proceed with all or any part of
+                    Services within 5 days of a request from Lanistar to remedy such failure or to proceed as
+                    instructed; (ii) Agency and/or Ambassador is in material breach of this this Agreement and (where
+                    capable of remedy) fails to remedy such breach within 5 days of a request from Lanistar to do so;
+                    (iii) Ambassador fails to meet any deadlines set out in the Agreement or agreed between the parties
+                    on: (a) 2 or more consecutive occasions; or (b) 4 or more occasions at any time; or (iv) there is a
+                    reduction by more than 10% between one month and the next in the Ambassador&#39;s followers or
+                    average impressions. Without prejudice to the foregoing, Lanistar may terminate all or any part of
+                    this Agreement at any time by giving 14 days&#39; notice to Ambassador and Agency.</p>
+            </main>
+        </section>
+        <div style="page-break-after:auto"></div>
+        <section class="pdf-page">
+            <main>
+                <h4>10. &quot;Material breach&quot;</h4>
+
+                <p>for the purposes of Section 9(ii) is any breach of Section 3, 5, 6, 12 and/or 13.</p>
+
+                <h4>11. After Termination.</h4>
+
+                <p>Sections 4, 5, 6, 8, 10, 11 and 13-18 of these Conditions survive termination or expiration of this
+                    Agreement. Following termination of this Agreement (save where Lanistar has terminated under Section
+                    9(i), (ii), (iii), (iv) or (v), where no further fees shall be payable or shares issued to the
+                    Ambassador): (a) Lanistar shall pay the Ambassador a pro rata proportion of the Fee in relation to
+                    the Services satisfactorily provided to Lanistar to the date of termination (to be determined by
+                    Lanistar in its sole discretion) as further described in &lsquo;Payment Timetable&rsquo; above; and
+                    (b) the Referral Bonus (if applicable) shall only be payable where the individual enters into a
+                    contract with Lanistar within 3 months of termination of this Agreement.</p>
+
+                <h4>12. Warranties.</h4>
+
+                <p>Ambassador and Agency each warrant that: (i) it has the authority to enter into this Agreement and to
+                    grant or procure the grant to Lanistar of the rights described in this Agreement; (ii) entering into
+                    and performing under this Agreement shall not violate applicable law or any rights of any third
+                    party; (iii) its performance under this Agreement does not and will not conflict with any applicable
+                    law and/or any agreement that it (or Ambassador) has with any third party; and (iv) it is not
+                    necessary for Lanistar to obtain permission from, or pay any fees to, any third party in connection
+                    with the rights granted in this Agreement.</p>
+
+                <h4>13. Confidentiality.</h4>
+
+                <p>Agency and Ambassador shall not disclose to any third party the terms of this Agreement or any
+                    information provided to Agency or Ambassador by Lanistar which is identified as confidential, or
+                    which by its nature should be understood to be confidential (except as may be required by law or
+                    legal process).</p>
+
+                <h4>14. Entire agreement.</h4>
+
+                <p>This Agreement constitutes the entire agreement between the parties with respect to its subject
+                    matter and supersedes prior discussions, arrangements and representations.</p>
+            </main>
+        </section>
+        <div style="page-break-after:auto"></div>
+        <section class="pdf-page">
+            <main>
+                <h4>15. Non-reliance.</h4>
+
+                <p>Each party acknowledges it has not been induced to enter into this Agreement by, nor has it relied
+                    upon, any representation, promise, assurance or undertaking made by the other party (save as
+                    expressly set out in this Agreement). Each party agrees that it shall have no claim for innocent or
+                    negligent misrepresentation or negligent misstatement based on any statement in this Agreement. Each
+                    party acknowledges that they understand the legal, tax and accounting implications of entering into
+                    this Agreement, and any information described herein does not constitute investment advice.</p>
+
+                <h4>16. Status of the parties.</h4>
+
+                <p>Nothing in this Agreement shall create a partnership or joint venture of any kind between the
+                    parties, or authorise either party to act as agent for the other. The Contracts (Rights of Third
+                    Parties) Act 1999 shall not apply to this Agreement. No party shall assign, transfer, charge, deal
+                    or sub-contract any of its rights or obligations under this Agreement.</p>
+
+                <h4>17. General.</h4>
+
+                <p>For the purposes of this Agreement, any words following terms such as including, in particular or for
+                    example shall be construed as illustrative and shall not limit the words preceding that term. This
+                    Agreement may not be varied other than in writing, signed by authorised signatories of each party.
+                    If any provision of this Agreement is held to be void or unenforceable in whole or part, the other
+                    provisions of this Agreement and the remainder of the affected provisions shall continue to be
+                    valid. Any waiver of any breach or right must be made in writing; and delay in exercising, or
+                    non-exercise of, any right shall not constitute a waiver of that right. This Agreement may be
+                    executed in counterparts. Each counterpart will be considered an original, and all of them, taken
+                    together, will constitute a single legal instrument.</p>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <h4>18. Governing law and jurisdiction.</h4>
+
+                <p>This Agreement and any dispute or claim (including non-contractual disputes or claims) arising out of
+                    or in connection with it or its subject matter or formation shall be governed by and construed in
+                    accordance with the law of England. The parties hereby irrevocably submit to the exclusive
+                    jurisdiction of the English courts in respect of any and all disputes or matters arising out of or
+                    in connection with this Agreement (including non-contractual disputes or matters).</p>
+
+                <h4>19. Changes in position.</h4>
+
+                <p>Should anything happen to you concerning: your financial stability and you are declared bankrupt, the
+                    Lanistar Board will determine the best course of action with respect to your shares. This may
+                    include transferring your shares to a Lanistar appointed third party at market value; or your
+                    health, your shares in Lanistar will pass to your beneficiaries in accordance with your will, or
+                    your next of kin (as applicable). Should you wish to sell your shares early please see the Lanistar
+                    Articles of Association for more information on the above, together with additional information on
+                    what you can do with your Lanistar shares.</p>
+            </main>
+        </section>
+        <div style="page-break-after:always"></div>
+        <section class="pdf-page">
+            <main>
+                <h4 style="background:#00B5E2; color:#fff;padding: 1rem; border-radius: 4px;">IF AMBASSADOR IS UNDER THE
+                    AGE OF 18 THEN AMBASSADOR&#39;S PARENT/LEGAL GUARDIAN MUST COMPLETE AND SIGN THE BELOW PARENTAL
+                    CONSENT FORM.</h4>
+
+                <h3>PARENT/GUARDIAN AGREEMENT</h3>
+
+                <p>I am the parent who has parental authority or the legal guardian of the above-named Ambassador. On
+                    behalf of Ambassador, myself, Ambassador&#39;s parents or guardians, and anyone else who may make
+                    any claim for or on behalf of Ambassador, I hereby agree:</p>
+
+                <p>&nbsp;</p>
+
+                <h4>TO ALL OF THE TERMS OF THIS AGREEMENT; AND</h4>
+
+                <h4>TO CAUSE AMBASSADOR TO COMPLY WITH THE TERMS OF THIS AGREEMENT.</h4>
+
+                <p>I AM THE PARENT WHO HAS PARENTAL AUTHORITY OR THE LEGAL GUARDIAN OF THE BELOW NAMED AMBASSADOR WHO IS
+                    UNDER THE AGE OF 18, AND I HAVE READ THE ABOVE CAREFULLY, FULLY UNDERSTAND ITS CONTENT, AND
+                    VOLUNTARILY AGREE TO THE TERMS.</p>
+
+                <div class="form-box-wrapper">
+                    <div class="form-box">
+                        <div class="header">NAME OF AMBASSADOR:</div>
+
+                        <div class="content"><input data-kpxc-id="kpxcpw342845655" name="Name of Ambassador"
+                                placeholder="Enter your name" type="text" /></div>
+                    </div>
+
+                    <div class="form-box">
+                        <div class="header">NAME OF PARENT OR LEGAL GUARDIAN:</div>
+
+                        <div class="content"><input data-kpxc-id="kpxcpw342845656" type="text" value="" /></div>
+                    </div>
+
+                    <div class="form-box">
+                        <div class="header">DATE OF BIRTH AMBASSADOR:</div>
+
+                        <div class="content"><input data-kpxc-id="kpxcpw342845660" maxlength="9" name="date of birth"
+                                placeholder="**/**/****" type="text" /></div>
+                    </div>
+
+                    <div class="form-box">
+                        <div class="header">PARENT OR LEGAL GUARDIAN&#39;S SIGNATURE:</div>
+
+                        <div class="content">
+                            <div id="agencySignature">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+    </form>
+</body>
+
+</html>

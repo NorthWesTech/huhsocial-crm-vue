@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost:3100",
+  "integrationFolder": "tests/e2e",
+  "env": {
+    "username": "testuser@lanistar.com",
+    "password": "1q2w3e4r",
+    "apiURL": "http://localhost:5001"
+  }
+}

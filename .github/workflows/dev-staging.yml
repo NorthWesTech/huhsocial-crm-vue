@@ -1,0 +1,49 @@
+name: Master Branch - Staging Deploy
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+env:
+  AWS_REGION: eu-west-2
+  AWS_DEFAULT_REGION: eu-west-2
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_GITOPS }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_GITOPS }} 
+  STAGE: staging
+  API_URL: http://landing-api.iamlanistarcom.it
+  ASSETS_URL: http://assets.dev-lanistar.com/
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.14.1'
+
+      - name: Yarn Operations and Build
+        run: |
+          yarn
+          yarn build:staging
+
+      - name: Configure AWS credentials
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_GITOPS }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_GITOPS }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          yarn deploy:staging

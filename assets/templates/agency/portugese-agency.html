@@ -1,0 +1,1103 @@
+<html>
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet" />
+    <style type="text/css">
+        html {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #333;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            font-size: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: .5rem;
+            border: 0px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #333;
+            max-width: 100%;
+        }
+
+        .justify-md-start {
+            justify-content: flex-start !important;
+        }
+
+        .table-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 3fr;
+            grid-template-rows: 50px 1fr;
+            grid-template-areas: "header header header"
+                "section-title table-title content"
+                "section-title table-title content"
+                "section-title table-title content";
+        }
+
+        .table-container.headless {
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas: "section-title table-title content"
+                "section-title table-title content"
+                "section-title table-title content";
+        }
+
+        .table-container .header {
+            grid-area: header;
+            background-color: #00B5E2;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            font-weight: 600;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .table-container .section-title {
+            grid-area: section-title;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #fff;
+            border-right: 1px solid #d4d4d4;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .table-container.dark .section-title,
+        .table-container.dark .table-title,
+        .table-container.dark .content {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .section-title.dark {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .table-title {
+            grid-area: table-title;
+            border-right: 1px solid #d4d4d4;
+        }
+
+        .table-container .content {
+            grid-area: content;
+        }
+
+        .table-container.no-content .section-title {
+            border: 0;
+            font-weight: 600;
+        }
+
+        .table-container.no-content .table-title {
+            border-right: 0;
+            grid-column: 2/-1;
+            padding: 1rem;
+        }
+
+        .table-container .table-row {
+            display: flex;
+            align-items: center;
+            padding: .75rem;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .table-container .table-row.dark {
+            background-color: #f5f5f5;
+        }
+
+        .table-container .row-1 {
+            height: 75px;
+        }
+
+        .table-container .row-2 {
+            height: 35px;
+        }
+
+        .table-container .row-3 {
+            height: 35px;
+        }
+
+        .table-container input,
+        .table-container label {
+            width: 100%;
+        }
+
+        .form-box-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 2rem;
+        }
+
+        .form-box-wrapper .form-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-box-wrapper .form-box .header {
+            background-color: #00B5E2;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: .25rem;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+        }
+
+        .form-box-wrapper .form-box .content {
+            padding: .5rem 0;
+        }
+
+        .form-box-wrapper .form-box .content input {
+            width: 100%;
+        }
+
+        .g-sign {
+            background-image: url('https://assets.dev.lanistar.app/inf-admin/templateimages/company-signature.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+        }
+
+        .page1 {
+            background: url('https://assets.dev.lanistar.app/inf-admin/templateimages/cover-black.jpg') no-repeat;
+            background-size: cover;
+            margin: 0 !important;
+            height: calc(1024px - 60px) !important;
+        }
+
+        .page1 h2 {
+            color: #ffffff;
+            max-width: 320px;
+
+        }
+
+        .pdf-page h2 {
+            font-family: arial;
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 0;
+
+        }
+
+        .pdf-page main {
+            background: none;
+
+        }
+
+        .pdf-page {
+            display: block;
+            position: relative;
+            padding: 30px 60px;
+        }
+
+
+        #lanistarSignature,
+        #agencySignature,
+        #ambassadorSignature,
+        #NDAContractSignature {
+            height: 65px !important;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            margin-top: 5px;
+
+        }
+    </style>
+</head>
+
+<body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.984.0">
+    <form>
+        <section class="page1 pdf-page inner-page" id="main_header">
+            <header style="padding-top:60px;">
+                <h2>CONTRATO DE PROPRIEDADE LANISTAR</h2>
+            </header>
+
+            <main>&nbsp;</main>
+        </section>
+
+        <div style="page-break-after:auto">&nbsp;</div>
+
+        <section class="pdf-page">
+            <header>
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td style="width:50%;">
+                                <h2 style="color:#00b2e2;">CONTRATO DE PROPRIEDADE LANISTAR</h2>
+                            </td>
+                            <td class="star_img_sec" style="width:50%; text-align:right;"><img class="star_img"
+                                    src="https://assets.dev.lanistar.app/inf-admin/templateimages/lanistar-star.png"
+                                    style="max-width:150px;" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </header>
+
+            <main>
+                <p><strong>DATA: {{currentDate}} (&quot;Data de In&iacute;cio&quot;)</strong></p>
+
+                <p><strong>ENTRE:</strong></p>
+
+                <p>(1) <strong>LANISTAR LIMITED</strong>,sociedade constitu&iacute;da na Inglaterra e Pa&iacute;s de
+                    Gales com n&uacute;mero de empresa 12091938, cuja sede registada &eacute; 361 King Street, Londres,
+                    Inglaterra, W6 9NA (&quot; <strong>Lanistar</strong>&quot;);</p>
+
+                <p>(2) <label> <input data-input-name="ambassadorName" data-person="influencer" data-person-name=""
+                            name="ambassador name" placeholder="Enter your name" required="required" size="25"
+                            type="text" /> </label>,</p>
+
+                <p>Morada:&nbsp; <label><textarea cols="95" data-input-name="ambassadorAddress" data-person="influencer"
+                            name="address" placeholder="Enter Your Address" required="required" rows="3"></textarea>
+                    </label><br />
+                    (&quot; <strong>Embaixador</strong>&quot;); e</p>
+
+                <p>(3) <label> <input data-input-name="agencyName" data-kpxc-id="kpxcpw342845642" data-person="agency"
+                            data-person-name="" name="agencyName" placeholder="Enter the name of the Agency/Agent"
+                            size="25" type="text" /> </label>,</p>
+
+                <p>Morada:&nbsp; <label><textarea cols="95" data-input-name="agencyAddress" data-person="agency"
+                            name="address" placeholder="Enter Agency/Agent address" required="required"
+                            rows="3"></textarea> </label> (&quot; <strong>Ag&ecirc;ncia</strong>&quot;).</p>
+
+                <p>A Lanistar est&aacute; a efetuar uma campanha de marketing e deseja que o Embaixador participe na
+                    campanha produzindo conte&uacute;do original e relevante e concedendo &agrave; Lanistar certos
+                    direitos de uso e publicidade relacionados com o conte&uacute;do. A Ag&ecirc;ncia tratar&aacute; de
+                    que o Embaixador forne&ccedil;a esses servi&ccedil;os e conceda esses direitos conforme especificado
+                    e nos termos da Vis&atilde;o Geral e das Condi&ccedil;&otilde;es (coletivamente, este
+                    &quot;Contrato&quot;).</p>
+            </main>
+        </section>
+
+        <div style="page-break-after:auto">&nbsp;</div>
+
+        <div class="pdf-page">
+            <div class="table-container">
+                <div class="header">ASSINADO</div>
+
+                <div class="section-title dark">Por e em nome de <strong>Lanistar:</strong></div>
+
+                <div class="table-title">
+                    <div class="table-row row-1">Assinatura</div>
+
+                    <div class="table-row row-2 dark">Nome</div>
+
+                    <div class="table-row row-3">Data</div>
+                </div>
+
+                <div class="content">
+                    <div class="table-row row-1">
+                        <div class="g-sign" id="lanistarSignature">&nbsp;</div>
+                    </div>
+
+                    <div class="table-row row-2 dark">Gurhan Kiziloz</div>
+
+                    <div class="table-row row-3">{{currentDate}}</div>
+                </div>
+            </div>
+
+            <div class="table-container headless">
+                <div class="section-title">Por e em nome de <strong>Ag&ecirc;ncia:</strong></div>
+
+                <div class="table-title">
+                    <div class="table-row row-1">Assinatura</div>
+
+                    <div class="table-row row-2 dark">Nome</div>
+
+                    <div class="table-row row-3">Data</div>
+                </div>
+
+                <div class="content">
+                    <div class="table-row row-1">
+                        <div data-person="agency" data-signature="true" id="agencySignature">&nbsp;</div>
+                    </div>
+
+                    <div class="table-row row-2 dark"><label><input class="form-control"
+                                data-input-name="agencySignName" data-person="agency" data-person-name=""
+                                name="Agency Name" placeholder="Enter your name" required="required" type="text" />
+                        </label></div>
+
+                    <div class="table-row row-3"><label><input class="form-control" data-date="true"
+                                data-input-name="agencySignDate" data-person="agency" name="Agency Date"
+                                placeholder="**/**/****" type="text" /> </label></div>
+                </div>
+            </div>
+
+            <div class="table-container headless">
+                <div class="section-title dark">Por e em nome de <strong>Embaixador:</strong></div>
+
+                <div class="table-title">
+                    <div class="table-row row-1">Assinatura</div>
+
+                    <div class="table-row row-2 dark">Nome</div>
+
+                    <div class="table-row row-3">Data</div>
+                </div>
+
+                <div class="content">
+                    <div class="table-row row-1">
+                        <div data-person="influencer" data-signature="true" id="ambassadorSignature">&nbsp;</div>
+                    </div>
+
+                    <div class="table-row row-2 dark"><label><input class="form-control"
+                                data-input-name="ambassadorSignName" data-person="influencer" data-person-name=""
+                                name="ambassadorName" placeholder="Enter your name" required="required" type="text" />
+                        </label></div>
+
+                    <div class="table-row row-3"><label><input class="form-control" data-date="true"
+                                data-error-message="Please Enter Ambassador Date" data-input-name="ambassadorSignDate"
+                                data-person="influencer" name="Ambassador Date" placeholder="**/**/****"
+                                required="required" type="text" /> </label></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container">
+                    <div class="header">VIS&Atilde;O GERAL</div>
+
+                    <div class="section-title dark">Dados de contacto da Lanistar</div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1 dark">Nome</div>
+
+                        <div class="table-row row-2">Tel</div>
+
+                        <div class="table-row row-3 dark">Email</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1 dark">Gurhan Kiziloz</div>
+
+                        <div class="table-row row-2">+44 7926476904</div>
+
+                        <div class="table-row row-3 dark">contracts@iamlanistar.com</div>
+                    </div>
+                </div>
+
+                <div class="table-container headless">
+                    <div class="section-title">Dados de contacto da ag&ecirc;ncia</div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1">Nome</div>
+
+                        <div class="table-row row-2 dark">Tel</div>
+
+                        <div class="table-row row-3">Email</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1"><label><input class="form-control"
+                                    data-input-name="agenctContactName" data-person="agency" data-person-name=""
+                                    placeholder="Enter Agency/Agent Name" required="required" type="text" /> </label>
+                        </div>
+
+                        <div class="table-row row-2 dark"><label><input class="form-control"
+                                    data-input-name="agencyContactNumber" data-input-tel="true" data-person="agency"
+                                    placeholder="Enter Contact Number" required="required" type="text" /> </label></div>
+
+                        <div class="table-row row-3"><label><input class="form-control"
+                                    data-input-name="agencyContactEmail" data-person="agency"
+                                    placeholder="Enter your email" required="required" type="text" /> </label></div>
+                    </div>
+                </div>
+
+                <div class="table-container headless">
+                    <div class="section-title dark">Dados de contacto do Embaixador</div>
+
+                    <div class="table-title">
+                        <div class="table-row row-1 dark">Nome</div>
+
+                        <div class="table-row row-2">Tel</div>
+
+                        <div class="table-row row-3 dark">Email</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="table-row row-1 dark"><label><input class="form-control"
+                                    data-input-name="ambassadorContactName" data-person="influencer" data-person-name=""
+                                    placeholder="Enter your name" required="required" type="text" /> </label></div>
+
+                        <div class="table-row row-2"><label><input class="form-control"
+                                    data-input-name="ambassadorContactNumber" data-input-tel="true"
+                                    data-person="influencer" placeholder="Enter Contact Number" required="required"
+                                    type="text" /> </label></div>
+
+                        <div class="table-row row-3 dark"><label><input class="form-control"
+                                    data-input-name="ambassadorContactEmail" data-person="influencer"
+                                    placeholder="Enter your email" required="required" type="text" /> </label></div>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content dark" style="margin-top:2rem;">
+                    <div class="section-title">Campanha</div>
+
+                    <div class="table-title">Lan&ccedil;amento do cart&atilde;o de pagamento da Lanistar</div>
+                </div>
+
+                <div class="table-container headless no-content">
+                    <div class="section-title">Data de In&iacute;cio da Campanha</div>
+
+                    <div class="table-title">Novembro de 2020</div>
+                </div>
+
+                <div class="table-container headless no-content dark">
+                    <div class="section-title">Data de Fim da Campanha</div>
+
+                    <div class="table-title">12 meses a partir da data de in&iacute;cio da campanha</div>
+                </div>
+
+                <div class="table-container headless no-content">
+                    <div class="section-title">Data de Meio da Campanha</div>
+
+                    <div class="table-title">6 meses a partir da data de in&iacute;cio da campanha</div>
+                </div>
+                <div class="table-container no-content" style="margin-top:2rem">
+                    <div class="header">SERVI&Ccedil;OS</div>
+
+                    <div class="section-title justify-md-start">Atividades</div>
+
+                    <div class="table-title">
+                        <p>Durante a Campanha, o Embaixador:</p>
+
+                        <ul>
+                            <li>Participar&aacute; em pelo menos 1 (uma) atividade organizada pela Lanistar, cuja
+                                natureza ser&aacute; notificada com anteced&ecirc;ncia ao Embaixador pela Lanistar,
+                                durante a qual o Embaixador criar&aacute; o seu Conte&uacute;do Social (conforme
+                                definido abaixo) para ser usado em tempo real em Canais do Embaixador (conforme definido
+                                abaixo) e que, para evitar d&uacute;vidas, ser&aacute; adicional aos requisitos de
+                                Conte&uacute;do Social detalhados abaixo. A atividade ser&aacute; realizada em
+                                hor&aacute;rio e data comunicados ao Embaixador, em local escolhido pela
+                                <strong>Lanistar</strong>;</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content">
+
+                    <div class="section-title justify-md-start"></div>
+
+                    <div class="table-title">
+
+                        <ul>
+                            <li>Participar&aacute; no evento de lan&ccedil;amento organizado pela Lanistar em hora e
+                                data notificadas ao Embaixador pela Lanistar pelo menos 4 semanas antes da data do
+                                evento, e num local selecionado pela Lanistar, durante o qual o Embaixador criar&aacute;
+                                o seu Conte&uacute;do Social para ser usado em tempo real nos Canais do Embaixador
+                                (conforme definido abaixo) e que para evitar d&uacute;vidas ser&aacute; adicional aos
+                                requisitos de Conte&uacute;do Social detalhados abaixo. A presen&ccedil;a no evento de
+                                lan&ccedil;amento &eacute; obrigat&oacute;ria (a <strong>Lanistar</strong> pode conceder
+                                isen&ccedil;&otilde;es a seu exclusivo crit&eacute;rio por um motivo v&aacute;lido).
+                            </li>
+                        </ul>
+
+                        <p>Para evitar d&uacute;vidas, o Conte&uacute;do Social criado de acordo com esta
+                            sec&ccedil;&atilde;o, Atividades, estar&aacute; sujeito aos Requisitos de
+                            Divulga&ccedil;&atilde;o e Requisitos de Tempo definidos abaixo, mas n&atilde;o
+                            estar&aacute; sujeito aos Requisitos de Aprova&ccedil;&atilde;o definidos abaixo.</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Conte&uacute;do Social</div>
+
+                    <div class="table-title">
+                        <p>O Embaixador usar&aacute; a sua posi&ccedil;&atilde;o nas redes sociais por meio de contas
+                            pertencentes e controladas pelo Embaixador, incluindo (mas sem limita&ccedil;&atilde;o)
+                            Instagram, Snapchat, Facebook, Twitter, TikTok, YouTube, LinkedIn e outros canais que a
+                            Lanistar possa especificar em cada momento (sendo cada um deles um &quot;
+                            <strong>Canal</strong>&quot;) para entregar as mensagens da Campanha. No m&iacute;nimo, o
+                            Embaixador publicar&aacute; as seguintes hist&oacute;rias e publica&ccedil;&otilde;es de
+                            grelha/feed:</p>
+
+                        <ul>
+                            <li>
+                                <p>uma publica&ccedil;&atilde;o seguindo um gui&atilde;o na Data de In&iacute;cio da
+                                    Campanha (a ser fornecido pela Lanistar e publicado de acordo com as
+                                    instru&ccedil;&otilde;es da Lanistar) num</p>
+
+                                <p>Canal acordado; o Embaixador reconhece que todos os influenciadores da Lanistar
+                                    publicar&atilde;o uma publica&ccedil;&atilde;o id&ecirc;ntica na Data de
+                                    In&iacute;cio da Campanha e que a sua precis&atilde;o (conte&uacute;do e momento)
+                                    &eacute; essencial; e depois</p>
+                            </li>
+                            <li><strong>por m&ecirc;s</strong> durante a Campanha um m&iacute;nimo de 4
+                                publica&ccedil;&otilde;es org&acirc;nicas no Canal acordado (conte&uacute;do a ser
+                                produzido de forma criativa e aut&ecirc;ntica pelo Embaixador e a ser publicado de
+                                acordo com as instru&ccedil;&otilde;es da Lanistar e sujeito &agrave;
+                                aprova&ccedil;&atilde;o pr&eacute;via da Lanistar);</li>
+                            <li>ocasionalmente durante a Campanha, textos seguindo um gui&atilde;o (a ser fornecidos
+                                pela Lanistar) num Canal acordado,</li>
+                        </ul>
+
+                        <p>(coletivamente, o &quot;Conte&uacute;do Social&quot;).</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content">
+                    <div class="section-title justify-md-start"></div>
+
+                    <div class="table-title">
+                        <p>O Conte&uacute;do Social deve incluir uma mistura de hist&oacute;rias e
+                            publica&ccedil;&otilde;es de grelha/feed. A Lanistar pode especificar a
+                            propor&ccedil;&atilde;o de hist&oacute;rias e publica&ccedil;&otilde;es de grelha/feed.</p>
+
+                        <p style="background:#d1e9f6; padding:5px;">Todo o Conte&uacute;do Social ter&aacute; a etiqueta
+                            @Lanistar;&nbsp;incluindo as seguintes hashtags: #iamlanistar #lanistar</p>
+                    </div>
+                </div>
+
+
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Conte&uacute;do Social</div>
+
+                    <div class="table-title">
+                        <p><strong>Requisitos de Divulga&ccedil;&atilde;o</strong></p>
+
+                        <ul>
+                            <li>Todas as publica&ccedil;&otilde;es deixar&atilde;o clara a rela&ccedil;&atilde;o
+                                comercial entre o Embaixador e a Lanistar. Em particular, o Embaixador deve usar o #ad
+                                handle em cada publica&ccedil;&atilde;o de maneira clara e direta e sempre no
+                                in&iacute;cio da publica&ccedil;&atilde;o.</li>
+                            <li>O Embaixador n&atilde;o deve tentar esconder ou de qualquer forma disfar&ccedil;ar o uso
+                                do #ad handle. Os visualizadores n&atilde;o devem ser obrigados a clicar, rolar para
+                                baixo ou mover o rato sobre um link para visualizar o #ad handle. Em particular, quando
+                                o Conte&uacute;do Social incluir vlogs ou v&iacute;deos, o Embaixador usar&aacute; o #ad
+                                handle no in&iacute;cio do t&iacute;tulo do v&iacute;deo/vlog e garantir&aacute; que
+                                todas as ocorr&ecirc;ncias do v&iacute;deo/vlog numa rede social ou sob outra forma
+                                (incluindo em forma de miniatura) mostram o #ad handle.</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content">
+                    <div class="section-title justify-md-start"></div>
+
+                    <div class="table-title">
+                        <ul>
+                            <li>A divulga&ccedil;&atilde;o do #ad &eacute; exigida independentemente de quaisquer
+                                limita&ccedil;&otilde;es de espa&ccedil;o da publica&ccedil;&atilde;o (por exemplo,
+                                Twitter). O Embaixador cumprir&aacute; quaisquer outros requisitos de
+                                divulga&ccedil;&atilde;o ou orienta&ccedil;&atilde;o da Lanistar em cada momento e
+                                garantir&aacute; que todas as publica&ccedil;&otilde;es estejam em conformidade com as
+                                boas pr&aacute;ticas atuais e quaisquer orienta&ccedil;&otilde;es e decis&otilde;es da
+                                Autoridade de Padr&otilde;es de Publicidade relevantes.</li>
+                            <li>A Lanistar pode solicitar que o Conte&uacute;do Social seja removido ou editado a
+                                qualquer momento e o Embaixador cumprir&aacute; prontamente essa
+                                solicita&ccedil;&atilde;o.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Conte&uacute;do Social</div>
+
+                    <div class="table-title">
+                        <p><strong>Requisitos de Aprova&ccedil;&atilde;o</strong></p>
+
+                        <p>O Embaixador tem de enviar todo o Conte&uacute;do Social &agrave; Lanistar para
+                            aprova&ccedil;&atilde;o antes da publica&ccedil;&atilde;o.&nbsp; O&nbsp;Conte&uacute;do
+                            Social ser&aacute; enviado com no m&iacute;nimo 7 dias de anteced&ecirc;ncia da
+                            publica&ccedil;&atilde;o pretendida. A Lanistar poder&aacute; fazer quaisquer
+                            altera&ccedil;&otilde;es ao Conte&uacute;do Social conforme julgar necess&aacute;rio e,
+                            quando requerido, o Embaixador reenviar&aacute; esse Conte&uacute;do Social modificado
+                            &agrave; Lanistar para aprova&ccedil;&atilde;o posterior. Uma vez aprovado, o Embaixador
+                            publicar&aacute; o Conte&uacute;do Social sob a forma acordada.</p>
+
+                        <p><strong>Requisitos de Tempo</strong></p>
+
+                        <p>Todo o Conte&uacute;do Social ser&aacute; publicado dentro dos per&iacute;odos discutidos e
+                            acordados com a Lanistar (com base em dados relativos &agrave;s intera&ccedil;&otilde;es do
+                            Embaixador).</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container no-content dark">
+                    <div class="header">DIREITOS DE UTILIZA&Ccedil;&Atilde;O</div>
+
+                    <div class="section-title">Conte&uacute;do</div>
+
+                    <div class="table-title">significa todo o conte&uacute;do, sob qualquer Forma, criado pelo
+                        Embaixador e/ou por ou em nome da Lanistar em resultado das Atividades, incluindo todo o
+                        Conte&uacute;do Social.</div>
+                </div>
+
+                <div class="table-container headless no-content">
+                    <div class="section-title">Meios</div>
+
+                    <div class="table-title">Internet, digital (incluindo campanhas org&acirc;nicas e pagas), redes
+                        sociais, editoriais impressos de novos meios, comunica&ccedil;&otilde;es.</div>
+                </div>
+
+                <div class="table-container headless no-content dark">
+                    <div class="section-title">Forma</div>
+
+                    <div class="table-title">Fotografias, fotografias de v&iacute;deo, fotografias hyperlapse, GIF,
+                        boomerangs, streams em direto, v&iacute;deos.</div>
+                </div>
+
+                <div class="table-container headless no-content ">
+                    <div class="section-title">Territ&oacute;rio</div>
+
+                    <div class="table-title">Global.</div>
+                </div>
+
+                <div class="table-container headless no-content dark">
+                    <div class="section-title">Per&iacute;odo de Licen&ccedil;a</div>
+
+                    <div class="table-title">Desde a Data de In&iacute;cio at&eacute; &agrave; data de 12 meses
+                        ap&oacute;s a Data de Fim da Campanha.</div>
+                </div>
+                <div class="table-container no-content dark" style="margin-top:2rem;">
+                    <div class="header">CONDI&Ccedil;&Otilde;ES DE PAGAMENTO E FATURA&Ccedil;&Atilde;O</div>
+
+                    <div class="section-title justify-md-start">Honor&aacute;rios</div>
+
+                    <div class="table-title"><strong>&pound;{{fee}}</strong> <strong> </strong>(os
+                        &quot;Honor&aacute;rios&quot;) a serem liquidados integralmente pela Lanistar ao emitir ao
+                        [Embaixador] <strong>{{contractShares}}</strong>&nbsp;a&ccedil;&otilde;es B de &pound;0.01 cada
+                        no capital da Lanistar, conforme descrito na Folha de Condi&ccedil;&otilde;es (as &quot;
+                        <strong>B Shares</strong>&quot;), creditadas como integralmente pagas ao valor nominal, mediante
+                        apresenta&ccedil;&atilde;o da fatura aplic&aacute;vel pelo Embaixador sob forma aceit&aacute;vel
+                        para a Lanistar (atuando razoavelmente) e de acordo com o Cronograma de Pagamento abaixo. Cada
+                        uma dessas faturas (&quot; <strong>Fatura de Honor&aacute;rios</strong>&quot;) deve refletir o
+                        facto de que deve ser liquidada pela emiss&atilde;o ao Embaixador das A&ccedil;&otilde;es B.
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+
+
+                <div class="table-container headless no-content">
+                    <div class="section-title justify-md-start">B&oacute;nus de Refer&ecirc;ncia</div>
+
+                    <div class="table-title">
+                        <p>Se o Embaixador encaminhar um ou mais indiv&iacute;duos para a Lanistar, que entrem em
+                            contrato com a Lanistar para fins de presta&ccedil;&atilde;o de servi&ccedil;os de marketing
+                            de influenciador, a Lanistar emitir&aacute; ao Embaixador A&ccedil;&otilde;es C de
+                            &pound;0.01 do capital da Lanistar ao valor nominal, conforme descrito na Folha de
+                            Condi&ccedil;&otilde;es (&quot; <strong>A&ccedil;&otilde;es C</strong>&quot;). O
+                            n&uacute;mero de A&ccedil;&otilde;es C a emitir ao Embaixador em rela&ccedil;&atilde;o a
+                            qualquer refer&ecirc;ncia bem-sucedida ser&aacute; determinado pela Lanistar a seu exclusivo
+                            crit&eacute;rio (&quot; <strong>B&oacute;nus de Refer&ecirc;ncia</strong>&quot;). Qualquer
+                            dessas emiss&otilde;es de A&ccedil;&otilde;es C estar&aacute; sujeita &agrave;s
+                            condi&ccedil;&otilde;es estabelecidas no Cronograma de Pagamento detalhado abaixo e o
+                            Embaixador emitir&aacute; &agrave; Lanistar uma fatura pelo valor nominal das
+                            a&ccedil;&otilde;es, sendo o equivalente em dinheiro do B&oacute;nus de Refer&ecirc;ncia.
+                            Novamente, essa fatura (a &quot; <strong>Fatura de B&oacute;nus</strong>&quot;)
+                            dever&aacute; refletir o facto de que ser&aacute; liquidada pela emiss&atilde;o ao
+                            Embaixador da quantidade proposta de A&ccedil;&otilde;es C.</p>
+
+                        <p>Para evitar d&uacute;vidas, nenhum B&oacute;nus de Refer&ecirc;ncia ser&aacute; devido ao
+                            Embaixador ou Ag&ecirc;ncia em rela&ccedil;&atilde;o a qualquer indiv&iacute;duo j&aacute;
+                            conhecido pela Lanistar ou em contacto com a Lanistar em rela&ccedil;&atilde;o ao
+                            fornecimento real ou potencial de servi&ccedil;os de marketing de influenciador. A Lanistar
+                            ter&aacute; o direito exclusivo de determinar se uma pessoa indicada pelo Embaixador
+                            &eacute; adequada para os seus objetivos.</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Cronograma de Pagamento</div>
+
+                    <div class="table-title">
+                        <p>Os Honor&aacute;rios ser&atilde;o pagos ao Embaixador (em A&ccedil;&otilde;es B, conforme
+                            acima descrito) em duas parcelas:</p>
+
+                        <ul>
+                            <li>a primeira, dentro de 30 dias ap&oacute;s a Data de Meio da Campanha; e</li>
+                            <li>a segunda, dentro de 30 dias ap&oacute;s a Data de Fim da Campanha,</li>
+                        </ul>
+
+                        <p>desde que o Embaixador tenha entregue a fatura de Honor&aacute;rios aplic&aacute;vel &agrave;
+                            Lanistar.</p>
+
+                        <p>O B&oacute;nus de Refer&ecirc;ncia, quando relevante, ser&aacute; pago ao Embaixador (em
+                            A&ccedil;&otilde;es C, como descrito acima) 6 meses ap&oacute;s a celebra&ccedil;&atilde;o
+                            do contrato do indiv&iacute;duo aplic&aacute;vel com a Lanistar, desde que esse contrato
+                            n&atilde;o tenha sido rescindido por qualquer motivo e a Lanistar esteja satisfeita (atuando
+                            razoavelmente ) com o desempenho desse indiv&iacute;duo, e desde que o Embaixador tenha
+                            entregue a Fatura de B&oacute;nus &agrave; Lanistar. Para efeitos do B&oacute;nus de
+                            Refer&ecirc;ncia, a Lanistar notificar&aacute; o Embaixador ap&oacute;s a
+                            celebra&ccedil;&atilde;o do contrato do indiv&iacute;duo aplic&aacute;vel com a Lanistar (e
+                            esse indiv&iacute;duo ser&aacute; anotado na Fatura de B&oacute;nus).</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <div class="table-container headless no-content" style="border-top: 3px solid #00B5E2;">
+                    <div class="section-title justify-md-start">Cronograma de Pagamento</div>
+
+                    <div class="table-title">Se este Contrato for rescindido antes da Data de Fim da Campanha (exceto
+                        quando a Lanistar o tiver rescindido de acordo com a Sec&ccedil;&atilde;o 9 (i), (ii), (iii),
+                        (iv) ou (v) das Condi&ccedil;&otilde;es abaixo, caso em que nenhuns outros honor&aacute;rios
+                        ser&atilde;o pag&aacute;veis ou a&ccedil;&otilde;es emitidas ao Embaixador), o Embaixador
+                        receber&aacute; A&ccedil;&otilde;es B com base numa propor&ccedil;&atilde;o pro rata dos
+                        Honor&aacute;rios (os &quot; <strong>Honor&aacute;rios Pro Rata</strong>&quot;) em
+                        rela&ccedil;&atilde;o aos Servi&ccedil;os fornecidos satisfatoriamente &agrave; Lanistar
+                        at&eacute; &agrave; data da rescis&atilde;o (a ser determinada pela Lanistar a seu exclusivo
+                        crit&eacute;rio). O n&uacute;mero de A&ccedil;&otilde;es B a emitir num tal cen&aacute;rio
+                        ser&aacute; calculado dividindo os Honor&aacute;rios Pro Rata pelos Honor&aacute;rios e
+                        multiplicando a fra&ccedil;&atilde;o resultante pelo n&uacute;mero de A&ccedil;&otilde;es B que
+                        de outra forma teriam sido emitidas se o Acordo n&atilde;o tivesse sido rescindido
+                        antecipadamente, arredondando para baixo para o n&uacute;mero inteiro mais pr&oacute;ximo. Essas
+                        a&ccedil;&otilde;es ser&atilde;o emitidas ao Embaixador, creditadas como integralmente pagas no
+                        prazo de 30 dias a contar da data de rescis&atilde;o e o Embaixador fornecer&aacute; uma fatura
+                        pelos Servi&ccedil;os prestados satisfatoriamente no montante dos Honor&aacute;rios Pro Rata.
+                    </div>
+                </div>
+                <h3>CONDI&Ccedil;&Otilde;ES</h3>
+
+                <p>Os termos em letras mai&uacute;sculas destas condi&ccedil;&otilde;es devem ter o significado que lhes
+                    &eacute; atribu&iacute;do na Vis&atilde;o Geral.</p>
+                <h4>1 Vig&ecirc;ncia.</h4>
+
+                <p>Este Contrato entra em vigor na Data de In&iacute;cio e, na condi&ccedil;&atilde;o das
+                    disposi&ccedil;&otilde;es para rescis&atilde;o antecipada estabelecidas nestas
+                    Condi&ccedil;&otilde;es, vigorar&aacute; at&eacute; &agrave; Data de Fim da Campanha, ap&oacute;s a
+                    qual ser&aacute; automaticamente rescindido, a menos que seja rescindido anteriormente de acordo com
+                    a Sec&ccedil;&atilde;o 9.</p>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+
+                <h4>2. Servi&ccedil;os.</h4>
+
+                <p>O Embaixador executar&aacute; os Servi&ccedil;os conforme descrito na Vis&atilde;o Geral e nestas
+                    Condi&ccedil;&otilde;es ou conforme a Lanistar solicitar. Quando as datas e/ou locais forem
+                    definidos na Vis&atilde;o Geral ou tiverem sido acordados para a presta&ccedil;&atilde;o de
+                    servi&ccedil;os espec&iacute;ficos, a Lanistar reserva-se o direito de alterar as datas e os locais
+                    mediante notifica&ccedil;&atilde;o em prazo razo&aacute;vel ao Embaixador e/ou Ag&ecirc;ncia. A
+                    Ag&ecirc;ncia tratar&aacute; de que o Embaixador entregue o Conte&uacute;do &agrave; Lanistar
+                    imediatamente ap&oacute;s a cria&ccedil;&atilde;o atrav&eacute;s do link de ficheiro WeTransfer, a
+                    menos que seja instru&iacute;do de outra forma pela Lanistar.</p>
+
+                <h4>3. Obriga&ccedil;&otilde;es da Ag&ecirc;ncia e do Embaixador.</h4>
+
+                <p>O Embaixador fornecer&aacute; os Servi&ccedil;os no momento exigido e de acordo com a Vis&atilde;o
+                    Geral, de uma maneira competente e profissional e em coopera&ccedil;&atilde;o volunt&aacute;ria com
+                    outros e seguir&aacute; todas as instru&ccedil;&otilde;es razo&aacute;veis da Lanistar na
+                    execu&ccedil;&atilde;o dos Servi&ccedil;os e cooperar&aacute; com qualquer terceiro que trabalhe com
+                    ou em nome da Lanistar. O Embaixador cumprir&aacute; e aderir&aacute; a quaisquer sensibilidades de
+                    marca que a Lanistar possa notificar ao Embaixador em rela&ccedil;&atilde;o &agrave; inclus&atilde;o
+                    dessa marca no Conte&uacute;do. O Embaixador n&atilde;o saturar&aacute; o seu perfil nos Meios,
+                    incluindo nos Canais, no momento de qualquer atividade de Conte&uacute;do Social acordada. Na
+                    eventualidade</p>
+
+                <p>de qualquer satura&ccedil;&atilde;o (a ser determinado pela Lanistar a seu exclusivo
+                    crit&eacute;rio), a Lanistar ter&aacute; o direito de exigir que o Embaixador publique novamente o
+                    Conte&uacute;do Social nos Canais e/ou publique novamente conte&uacute;do alternativo fornecido pela
+                    Lanistar. O Embaixador fornecer&aacute; atualiza&ccedil;&otilde;es precisas e completas &agrave;
+                    Lanistar em rela&ccedil;&atilde;o &agrave;s impress&otilde;es, seguidores e outros dados que a
+                    Lanistar possa exigir em cada momento. Qualquer refer&ecirc;ncia neste Contrato a uma
+                    obriga&ccedil;&atilde;o ou requisito do Embaixador ser&aacute; considerada como incluindo, quando
+                    pertinente, uma obriga&ccedil;&atilde;o da Ag&ecirc;ncia de assegurar que o Embaixador cumpra com
+                    essa obriga&ccedil;&atilde;o ou requisito.</p>
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <div class="pdf-page">
+            <main>
+                <h4>4. Direitos.</h4>
+
+                <p>De acordo com os Direitos de Utiliza&ccedil;&atilde;o, o Embaixador concede &agrave; Lanistar o
+                    direito de sublicenciar, distribuir, publicar, exibir, digitalizar, emitir, fazer stream, mostrar e
+                    de qualquer outra forma usar qualquer aspeto do Conte&uacute;do, incluindo o nome, imagem e
+                    apar&ecirc;ncia do Embaixador ou quaisquer materiais com base ou derivados desses elementos,
+                    juntamente com o direito de editar, adaptar, manipular, modificar, melhorar ou fazer trabalhos
+                    derivados de qualquer um dos elementos acima para fins de publicidade, promo&ccedil;&atilde;o e
+                    marketing da Lanistar e da Campanha, sob qualquer forma e atrav&eacute;s de qualquer Meio, no
+                    Territ&oacute;rio, durante o Per&iacute;odo de Licen&ccedil;a. Ap&oacute;s o Per&iacute;odo de
+                    Licen&ccedil;a, esses direitos prolongar-se-&atilde;o perpetuamente para os neg&oacute;cios internos
+                    da Lanistar, B2B e fins de arquivamento. N&atilde;o obstante a rescis&atilde;o ou
+                    expira&ccedil;&atilde;o deste Contrato ou do Per&iacute;odo de Licen&ccedil;a, o Conte&uacute;do
+                    postado nas redes sociais durante o per&iacute;odo de licen&ccedil;a pode permanecer na plataforma
+                    de rede social conforme originalmente publicado.</p>
+
+                <h4>5. PI.</h4>
+
+                <p>A Ag&ecirc;ncia e o Embaixador reconhecem que n&atilde;o t&ecirc;m quaisquer direitos sobre os nomes,
+                    log&oacute;tipos, marcas comerciais ou quaisquer outros direitos de propriedade intelectual da
+                    Lanistar. O Embaixador contribuir&aacute; apenas com o seu Conte&uacute;do original ou
+                    Conte&uacute;do do qual tenha todos os direitos necess&aacute;rios para contribuir. O Embaixador e a
+                    Ag&ecirc;ncia exonerar&atilde;o e manter&atilde;o indemne a Lanistar de quaisquer custos, despesas e
+                    danos (incluindo honor&aacute;rios legais) incorridos pela Lanistar em resultado de um terceiro vir
+                    a fazer qualquer reclama&ccedil;&atilde;o (seja em rela&ccedil;&atilde;o &agrave; propriedade ou
+                    qualquer outra) em rela&ccedil;&atilde;o ao Conte&uacute;do. O Embaixador e a Ag&ecirc;ncia em
+                    nenhum momento cometer&atilde;o qualquer ato que, na opini&atilde;o da Lanistar: (i) choque ou
+                    ofenda a comunidade; (ii) manifeste desprezo ou desrespeito pela diversidade, moral p&uacute;blica
+                    ou dec&ecirc;ncia; ou (iii) n&atilde;o reflita favoravelmente a Lanistar e o seu bom nome, valor
+                    e/ou reputa&ccedil;&atilde;o.</p>
+
+
+            </main>
+        </div>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <h4>6. Exclusividade.</h4>
+
+                <p>Desde a Data de In&iacute;cio at&eacute; &agrave; Data de Fim da Campanha, o embaixador n&atilde;o
+                    far&aacute; nem ser&aacute; anfitri&atilde;o de quaisquer atividades promocionais, eventos,
+                    presen&ccedil;as, colabora&ccedil;&otilde;es ou campanhas, nem endossar&aacute; ou de outra forma
+                    permitir&aacute; o uso do nome, fotografia, apar&ecirc;ncia, endosso ou voz do Embaixador por
+                    qualquer forma em propaganda ou publicidade para qualquer marca de tecnol&oacute;gica financeira ou
+                    banco concorrente.</p>
+                <h4>7. Honor&aacute;rios.</h4>
+
+                <p>Como remunera&ccedil;&atilde;o pela aquisi&ccedil;&atilde;o da presta&ccedil;&atilde;o dos
+                    Servi&ccedil;os e da concess&atilde;o dos Direitos de Utiliza&ccedil;&atilde;o, a Lanistar
+                    pagar&aacute; ao Embaixador os Honor&aacute;rios (em A&ccedil;&otilde;es B, como descrito acima) e,
+                    quando relevante, o B&oacute;nus de Refer&ecirc;ncia (em A&ccedil;&otilde;es C, como descrito
+                    acima). A Lanistar pagar&aacute; os Honor&aacute;rios e, quando relevante, o B&oacute;nus de
+                    Refer&ecirc;ncia de acordo com o Cronograma de Pagamento. O Embaixador ser&aacute; o &uacute;nico
+                    respons&aacute;vel pela reten&ccedil;&atilde;o e/ou pagamento de quaisquer impostos, taxas, ou
+                    pagamentos exigidos por lei que possam ser devidos em rela&ccedil;&atilde;o a este Contrato.
+                    Al&eacute;m dos Honor&aacute;rios e, quando relevante, do B&oacute;nus de Refer&ecirc;ncia e das
+                    Despesas, a Lanistar n&atilde;o ser&aacute; respons&aacute;vel por quaisquer outros custos ou
+                    despesas incorridos pela Ag&ecirc;ncia ou Embaixador em rela&ccedil;&atilde;o a este Contrato. Para
+                    evitar d&uacute;vidas, o Embaixador e/ou a Ag&ecirc;ncia n&atilde;o ser&aacute; pago em dinheiro em
+                    rela&ccedil;&atilde;o a este Contrato ou &agrave; presta&ccedil;&atilde;o dos Servi&ccedil;os, e as
+                    emiss&otilde;es de a&ccedil;&otilde;es ao Embaixador, conforme descrito na Vis&atilde;o Geral,
+                    cumprir&atilde;o por completo as obriga&ccedil;&otilde;es da Lanistar, nos termos deste Contrato, de
+                    pagar os Honor&aacute;rios e, quando relevante, o B&oacute;nus de Refer&ecirc;ncia.</p>
+
+                <p>&nbsp;</p>
+
+                <h4>8. Responsabilidade.</h4>
+
+                <p>A responsabilidade total do Embaixador e da Ag&ecirc;ncia para com a Lanistar nos termos deste
+                    Contrato n&atilde;o exceder&aacute; o valor m&aacute;ximo dos Honor&aacute;rios e &pound;500,000.
+                    Nada neste Contrato limita qualquer responsabilidade que n&atilde;o possa ser legalmente limitada.
+                </p>
+
+
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <h4>9. Rescis&atilde;o.</h4>
+
+                <p>Al&eacute;m dos seus outros direitos e rem&eacute;dios, a Lanistar pode rescindir a totalidade ou
+                    parte deste Contrato imediatamente mediante notifica&ccedil;&atilde;o, se: (i) o Embaixador
+                    incumprir ou se recusar a prosseguir com a totalidade ou parte dos Servi&ccedil;os no prazo de 5
+                    dias ap&oacute;s uma solicita&ccedil;&atilde;o da Lanistar para remediar o incumprimento ou para
+                    proceder conforme as instru&ccedil;&otilde;es; (ii) a Ag&ecirc;ncia e/ou o Embaixador incumprir
+                    materialmente este Contrato e (quando capaz de o remediar) n&atilde;o corrigir esse incumprimento
+                    dentro de 5 dias ap&oacute;s uma solicita&ccedil;&atilde;o da Lanistar para o fazer; (iii) o
+                    Embaixador deixar de cumprir quaisquer prazos estabelecidos no Contrato ou acordados entre as partes
+                    em: (a) 2 ou mais ocasi&otilde;es consecutivas; ou (b) 4 ou mais ocasi&otilde;es a qualquer momento;
+                    ou (iv) houver uma redu&ccedil;&atilde;o de mais de 10% entre um m&ecirc;s e o seguinte nos
+                    seguidores ou impress&otilde;es m&eacute;dias do Embaixador. Sem preju&iacute;zo do acima exposto, a
+                    Lanistar poder&aacute; rescindir a totalidade ou parte deste Contrato a qualquer momento, mediante
+                    notifica&ccedil;&atilde;o com 14 dias de anteced&ecirc;ncia ao Embaixador e &agrave; Ag&ecirc;ncia.
+                </p>
+                <h4>10. &quot;Incumprimento material&quot;</h4>
+
+                <p>Para os fins da Sec&ccedil;&atilde;o 9 (ii) &eacute; qualquer incumprimento das Sec&ccedil;&otilde;es
+                    3, 5, 6, 12 e/ou 13.</p>
+
+                <h4>11. Ap&oacute;s a rescis&atilde;o.</h4>
+
+                <p>As Sec&ccedil;&otilde;es 4, 5, 6, 8, 10, 11 e 13-18 destas Condi&ccedil;&otilde;es sobrevivem
+                    &agrave; rescis&atilde;o ou expira&ccedil;&atilde;o deste Contrato. Ap&oacute;s a rescis&atilde;o
+                    deste Contrato (exceto quando a Lanistar o tiver rescindido nos termos da Sec&ccedil;&atilde;o 9
+                    (i), (ii), (iii), (iv) ou (v), em que nenhuns outros honor&aacute;rios ser&atilde;o pagos ou
+                    a&ccedil;&otilde;es emitidas ao Embaixador): ( a) a Lanistar pagar&aacute; ao Embaixador uma
+                    propor&ccedil;&atilde;o pro rata dos Honor&aacute;rios em rela&ccedil;&atilde;o aos Servi&ccedil;os
+                    fornecidos satisfatoriamente &agrave; Lanistar at&eacute; &agrave; data de rescis&atilde;o (a ser
+                    determinada pela Lanistar a seu exclusivo crit&eacute;rio) conforme descrito em &quot;Cronograma de
+                    Pagamento&quot; acima; e (b) o B&oacute;nus de Refer&ecirc;ncia (se aplic&aacute;vel) s&oacute;
+                    ser&aacute; pago quando o indiv&iacute;duo celebrar um contrato com a Lanistar no prazo de 3 meses
+                    ap&oacute;s a rescis&atilde;o deste Contrato.</p>
+
+
+
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <h4>12. Garantias.</h4>
+
+                <p>O Embaixador e a Ag&ecirc;ncia garantem que: (i) t&ecirc;m autoridade para celebrar este Contrato e
+                    conceder ou obter a concess&atilde;o &agrave; Lanistar dos direitos descritos neste Contrato; (ii)
+                    celebrar e cumprir este Contrato n&atilde;o ir&aacute; contra a lei aplic&aacute;vel ou quaisquer
+                    direitos de terceiros; (iii) o seu desempenho nos termos deste Contrato n&atilde;o entra em conflito
+                    com qualquer lei aplic&aacute;vel e/ou qualquer contrato que tenha (ou o Embaixador) com qualquer
+                    terceiro; e (iv) n&atilde;o &eacute; necess&aacute;rio que a Lanistar obtenha permiss&atilde;o, ou
+                    pague quaisquer honor&aacute;rios a quaisquer terceiros em rela&ccedil;&atilde;o aos direitos
+                    concedidos neste Contrato.</p>
+                <h4>13. Confidencialidade.</h4>
+
+                <p>A Ag&ecirc;ncia e o Embaixador n&atilde;o divulgar&atilde;o a terceiros as condi&ccedil;&otilde;es
+                    deste Contrato ou qualquer informa&ccedil;&atilde;o fornecida &agrave; Ag&ecirc;ncia ou Embaixador
+                    pela Lanistar que seja identificada como confidencial, ou que pela sua natureza deva ser entendida
+                    como confidencial (exceto conforme possa ser exigido por lei ou processo legal).</p>
+
+                <h4>14. Acordo integral.</h4>
+
+                <p>Este Contrato constitui o acordo integral entre as partes em rela&ccedil;&atilde;o ao seu objeto e
+                    sobrep&otilde;e-se a discuss&otilde;es, disposi&ccedil;&otilde;es e declara&ccedil;&otilde;es
+                    anteriores.</p>
+
+                <h4>15. N&atilde;o depend&ecirc;ncia.</h4>
+
+                <p>Cada uma das partes reconhece que n&atilde;o foi induzida a celebrar este Contrato por, nem se baseou
+                    em, qualquer declara&ccedil;&atilde;o, promessa, garantia ou compromisso feito pela outra parte
+                    (exceto conforme expressamente estabelecido neste Contrato). Cada uma das partes concorda que
+                    n&atilde;o far&aacute; qualquer reivindica&ccedil;&atilde;o sobre declara&ccedil;&otilde;es falsas
+                    ou negligentes ou erros negligentes com base em qualquer declara&ccedil;&atilde;o do presente
+                    Contrato. Cada uma das partes reconhece que compreende as implica&ccedil;&otilde;es
+                    jur&iacute;dicas, fiscais e contabil&iacute;sticas da celebra&ccedil;&atilde;o deste Contrato e que
+                    qualquer informa&ccedil;&atilde;o aqui descrita n&atilde;o constitui um conselho de investimento.
+                </p>
+
+
+
+            </main>
+        </section>
+
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <h4>16. Condi&ccedil;&atilde;o das partes.</h4>
+
+                <p>Nada neste Contrato criar&aacute; uma parceria ou joint venture de qualquer tipo entre as partes, ou
+                    autoriza qualquer das partes a atuar como agente da outra. A Lei dos Contratos (Direitos de
+                    Terceiros) de 1999 n&atilde;o se aplica a este Contrato. Nenhuma das partes deve ceder, transmitir,
+                    cobrar, negociar ou subcontratar qualquer um dos seus direitos ou obriga&ccedil;&otilde;es nos
+                    termos deste Contrato.</p>
+                <h4>17. Geral.</h4>
+
+                <p>Para os fins deste Contrato, quaisquer palavras que se sigam a termos como &quot;incluindo&quot;,
+                    &quot;em particular&quot; ou &quot;por exemplo&quot; ser&atilde;o interpretadas como ilustrativas e
+                    n&atilde;o limitar&atilde;o as palavras que precedem esse termo. Este Contrato n&atilde;o pode ser
+                    alterado, exceto por escrito, assinado por signat&aacute;rios autorizados de cada uma das partes. Se
+                    qualquer disposi&ccedil;&atilde;o deste Contrato for considerada nula ou inexequ&iacute;vel na
+                    totalidade ou em parte, as outras disposi&ccedil;&otilde;es deste Contrato e o restante das
+                    disposi&ccedil;&otilde;es afetadas continuar&atilde;o a ser v&aacute;lidas. Qualquer ren&uacute;ncia
+                    a qualquer incumprimento ou direito ser&aacute; feita por escrito; e o atraso no exerc&iacute;cio ou
+                    n&atilde;o-exerc&iacute;cio de qualquer direito n&atilde;o significar&aacute; uma ren&uacute;ncia a
+                    esse direito. O presente Contrato poder&aacute; ser celebrado em mais do que uma via. Cada via
+                    ser&aacute; considerada como original e todas, em conjunto, constituir&atilde;o um &uacute;nico
+                    instrumento jur&iacute;dico.</p>
+
+                <h4>18. Legisla&ccedil;&atilde;o aplic&aacute;vel e jurisdi&ccedil;&atilde;o</h4>
+
+                <p>Este Contrato e qualquer lit&iacute;gio ou reclama&ccedil;&atilde;o (incluindo lit&iacute;gios
+                    n&atilde;o-contratuais ou reclama&ccedil;&otilde;es) decorrentes ou em liga&ccedil;&atilde;o com ele
+                    ou o seu objeto ou forma&ccedil;&atilde;o ser&atilde;o regidos e interpretados de acordo com a lei
+                    da Inglaterra. As partes submetem-se irrevogavelmente &agrave; jurisdi&ccedil;&atilde;o exclusiva
+                    dos tribunais ingleses em rela&ccedil;&atilde;o a todos e quaisquer lit&iacute;gios ou
+                    quest&otilde;es decorrentes ou em liga&ccedil;&atilde;o com este Contrato (incluindo lit&iacute;gios
+                    ou quest&otilde;es n&atilde;o contratuais).</p>
+
+
+            </main>
+        </section>
+        <div style="page-break-after:always">&nbsp;</div>
+
+        <section class="pdf-page">
+            <main>
+                <h4>19. Mudan&ccedil;as de posi&ccedil;&atilde;o.</h4>
+
+                <p>Caso alguma coisa lhe aconte&ccedil;a em rela&ccedil;&atilde;o a: a sua estabilidade financeira e for
+                    declarado falido, o Conselho da Lanistar determinar&aacute; o melhor curso de a&ccedil;&atilde;o em
+                    rela&ccedil;&atilde;o &agrave;s suas a&ccedil;&otilde;es. Isso pode incluir a transmiss&atilde;o das
+                    suas a&ccedil;&otilde;es para um terceiro nomeado pela Lanistar, pelo valor de mercado; ou a sua
+                    sa&uacute;de, as suas a&ccedil;&otilde;es na Lanistar passar&atilde;o para os seus
+                    benefici&aacute;rios de acordo com a sua vontade, ou para o seu familiar mais pr&oacute;ximo
+                    (conforme aplic&aacute;vel). Caso deseje vender as suas a&ccedil;&otilde;es antecipadamente,
+                    consulte os Estatutos de Constitui&ccedil;&atilde;o da Lanistar para obter mais
+                    informa&ccedil;&otilde;es sobre o acima exposto, juntamente com informa&ccedil;&otilde;es adicionais
+                    sobre o que pode fazer com as suas a&ccedil;&otilde;es da Lanistar.</p>
+            </main>
+        </section>
+    </form>
+</body>
+
+</html>

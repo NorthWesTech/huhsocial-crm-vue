@@ -1,0 +1,211 @@
+html {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-size: 1rem;
+}
+
+input,
+textarea {
+    padding: .5rem;
+    border: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    max-width: 100%;
+}
+
+.justify-md-start {
+    justify-content: flex-start !important;
+}
+
+.table-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 3fr;
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: "header header header"
+        "section-title table-title content"
+        "section-title table-title content"
+        "section-title table-title content";
+}
+
+.table-container.headless {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: "section-title table-title content"
+        "section-title table-title content"
+        "section-title table-title content";
+}
+
+.table-container .header {
+    grid-area: header;
+    background-color: #00B5E2;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-weight: 600;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.table-container .section-title {
+    grid-area: section-title;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-right: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.table-container.dark .section-title,
+.table-container.dark .table-title,
+.table-container.dark .content {
+    background-color: #f5f5f5;
+}
+
+.table-container .section-title.dark {
+    background-color: #f5f5f5;
+}
+
+.table-container .table-title {
+    grid-area: table-title;
+    border-right: 1px solid #d4d4d4;
+}
+
+.table-container .content {
+    grid-area: content;
+}
+
+.table-container.no-content .section-title {
+    border: 0;
+    font-weight: 600;
+}
+
+.table-container.no-content .table-title {
+    border-right: 0;
+    grid-column: 2/-1;
+    padding: 1rem;
+}
+
+.table-container .table-row {
+    display: flex;
+    align-items: center;
+    padding: .75rem;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.table-container .table-row.dark {
+    background-color: #f5f5f5;
+}
+
+.table-container .row-1 {
+    height: 75px;
+}
+
+.table-container .row-2 {
+    height: 35px;
+}
+
+.table-container .row-3 {
+    height: 35px;
+}
+
+.table-container input,
+.table-container label {
+    width: 100%;
+}
+
+.form-box-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2rem;
+}
+
+.form-box-wrapper .form-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-box-wrapper .form-box .header {
+    background-color: #00B5E2;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: .25rem;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.form-box-wrapper .form-box .content {
+    padding: .5rem 0;
+}
+
+.form-box-wrapper .form-box .content input {
+    width: 100%;
+}
+
+.g-sign {
+    background-image: url('https://assets.dev.lanistar.app/inf-admin/templateimages/company-signature.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.page1 {
+    background: url('https://assets.dev.lanistar.app/inf-admin/templateimages/cover-black.jpg') no-repeat;
+    background-size: cover;
+    margin: 0 !important;
+    height: calc(1024px - 60px) !important;
+}
+
+.page1 h2 {
+    color: #ffffff;
+    max-width: 320px;
+
+}
+
+.pdf-page h2 {
+    font-family: arial;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 0;
+
+}
+
+.pdf-page main {
+    background: none;
+
+}
+
+.pdf-page {
+    display: block;
+    position: relative;
+    padding: 30px 60px;
+}
+
+
+#lanistarSignature,
+#agencySignature,
+#ambassadorSignature,
+#NDAContractSignature {
+    height: 65px !important;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    margin-top: 5px;
+
+}
